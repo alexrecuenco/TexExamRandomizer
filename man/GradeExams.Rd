@@ -35,7 +35,7 @@ Grades an exam given a parsed list by \code{\link{WhichAnswerOriginal}}
 \details{
 The score is first added on the base of the number of questions that are found on every parsed list.
 
-If a question is removed from an exam, not all students may have that question as explained in the "Removing questions from the exam" section. If the total rows of a certain student list is \eqn{n}, the score is \eqn{c/n * \code{MaxOutputGrade}}, where \eqn{c} is the number of correct answers.
+If a question is removed from an exam, not all students may have that question as explained in the "Removing questions from the exam" section. If the total rows of a certain student list is \eqn{n}, the score is \deqn{c / n * MaxOutputGrade}, where \eqn{c} is the number of correct answers.
 
 After that is done, the \code{ExtraPoints} are added.
 }
@@ -45,7 +45,7 @@ After that is done, the \code{ExtraPoints} are added.
 The structure of \code{ExtraPoints} and the convention on how the score is calculated taking it into account is worth mentioning in it's own section.
 The score is calculated as:
 
-\deqn{\code{total_grade} = (\code{c}+ \code{extra_all}) / (\code{maxn} + \code{extra_all}) * \code{MaxOutputGrade} + \code{extra_individual}}
+\deqn{total_{grade} = (c + extra_{all}) / (maxn + extra_{all}) * MaxOutputGrade + extra_{individual}}
 Where \describe{
 \item{\code{c}}{Number of correct questions}
 \item{\code{extra_all}}{Number of extra points for all.

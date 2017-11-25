@@ -20,6 +20,14 @@ If you just want to randomize your exams,
 
 If instead you are trying to use the library to create your own randomizer for a certain use you might have, you should start by looking at \code{\link{CreateRandomExams}} and \code{\link{GenerateHomework}}.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/alexrecuenco/TexExamRandomizer}
+  \item Report bugs at \url{https://github.com/alexrecuenco/TexExamRandomizer/issues}
+}
+
+}
 \author{
 Alejandro Gonzalez Recuenco
 
