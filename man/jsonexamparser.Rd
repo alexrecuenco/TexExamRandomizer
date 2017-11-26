@@ -7,11 +7,16 @@
 jsonexamparser(opt)
 }
 \arguments{
-\item{opt}{Options as parsed from \code{\link[optparse]{parse_args}}. See the example code to see the expected format of the options handed to this program.}
+\item{opt}{Options as parsed from \code{\link[optparse]{parse_args}}. The function expects a series of options, the example code exemplifies those options that the function understands.}
 }
 \description{
-This function takes a series of options as obtained from \code{\link[optparse]{parse_args}} with the format given below as an example.
-And from that information it finds a --file option. Searches for \code{\%!TexExamRandomizer} tags in the first 200 lines of the preamble of that file and applies \code{\link{CreateRandomExams}}. To that file with the options found from the command and the tags.
+This function takes a series of options as obtained from \code{\link[optparse]{parse_args}} through the parameter \code{opt}. The "examples" section provides all the options that it can parse.
+
+From within those options, a \code{--file} option is mandatory.
+
+The file option provides a LaTeX file name in which to search for lines on the preamble \code{\%!TexExamRandomizer} within the first 200 lines.
+
+With those options that it finds through tags, it passes the function \code{\link{CreateRandomExams}}.
 
 Note that the tags must respect the JSON format, that is. It \emph{needs} to be written within double quotes.
 }
@@ -20,7 +25,7 @@ All the options can be found on
 
 \code{vignette("ExamOptions", package = "TexExamRandomizer")}
 
-The options that are called "command line" options in the vignette are those that are given to the function through opt, the rest of the options are read directly frmo the document specified with \code{--file <filename>}
+The options that are called "command line" options in the vignette are those that are given to the function through \code{opt}, the rest of the options are read directly froo the document specified with \code{--file <filename>}
 }
 \examples{
 \dontrun{

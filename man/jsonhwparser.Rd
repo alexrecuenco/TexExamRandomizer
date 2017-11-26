@@ -7,20 +7,23 @@
 jsonhwparser(opt)
 }
 \arguments{
-\item{opt}{Options as parsed from \code{\link[optparse]{parse_args}}. See the example code to see the expected format of the options handed to this program.}
+\item{opt}{Options as parsed from \code{\link[optparse]{parse_args}}. The function expects a series of options, the example code exemplifies those options that the function understands.}
 }
 \description{
-This function takes a series of options as obtained from \code{\link[optparse]{parse_args}} with the format given below as an example.
-And from that information it finds a --file option. Searches for \code{\%!TexExamRandomizer} tags in the first 200 lines of the preamble of that file and applies \code{\link{GenerateHomework}} to that file with the options found from the command and the tags.
+This function takes a series of options as obtained from \code{\link[optparse]{parse_args}} through the parameter \code{opt}. The "examples" section provides all the options that it can parse.
+
+From within those options, a \code{--file} option is mandatory.
+
+The file option provides a LaTeX file name in which to search for lines on the preamble \code{\%!TexExamRandomizer} within the first 200 lines.
+
+With those options that it finds through tags, it passes the function \code{\link{GenerateHomework}}.
 
 Note that the tags must respect the JSON format, that is. It \emph{needs} to be written within double quotes.
 }
 \details{
-It acts similarly to \code{link{jsonexamparser}}, but without randomizing the document. It only modifies the preamble to customize settings.
+It acts similarly to \code{link{jsonexamparser}}, but with the exception of not providing any randomiation option, it only provides the personalization options.
 
 Look at \code{vignette("ExamOptions", package = "TexExamRandomizer")} to see the details of the options that it accepts.
-
-It accepts the same options as \code{link{jsonexamparser}}, with the exception of those options that relate to randomizing the order of the document.
 }
 \examples{
 \dontrun{

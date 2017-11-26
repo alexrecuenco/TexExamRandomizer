@@ -1,3 +1,7 @@
 # man/*.Rd
 inst/doc
 .Rproj.user
+
+.RData
+
+.Rhistory

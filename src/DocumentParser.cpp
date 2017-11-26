@@ -299,4 +299,4 @@ List CompileDocument(
 
     return compiler.compile(x.begin(), x.end(), 0);
 
-};
+}
