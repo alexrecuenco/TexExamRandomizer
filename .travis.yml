@@ -1,6 +1,5 @@
 language: r
 cache: packages
-
 r:
  - oldrel
  - release
@@ -8,5 +7,6 @@ r:
 os:
  - osx
  - linux
-
 disable_homebrew: true
+r_github_packages:
+  - hadley/devtools
