@@ -1,5 +1,6 @@
 # TexExamRandomizer
-R package, randomizing LaTeX exams and grading them.
+[![Build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=master)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
+R package, randomizing LaTeX exams and grading them. 
 
 Randomizes LaTeX exams with a flexible set of options that can be provided directly in the document, using JSON-format. 
 
