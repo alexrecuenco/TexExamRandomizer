@@ -5,8 +5,8 @@ r:
  - oldrel
  - release
  - devel
- os:
-   - osx
-   - linux
+os:
+ - osx
+ - linux
 
 disable_homebrew: true
