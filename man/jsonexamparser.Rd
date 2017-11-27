@@ -29,6 +29,11 @@ The options that are called "command line" options in the vignette are those tha
 }
 \examples{
 \dontrun{
+#!/bin/Rscript
+#This example showcases the type of script this jsonparser might be used on.
+# You can still use it without a script,
+# just by adding a list that has the same names as the list provided in opt
+library(optparse)
 option_list <- list(
     make_option(
         c("--file"),
@@ -96,6 +101,21 @@ opt <-
         OptionParser(option_list = option_list),
         positional_arguments = TRUE
     )
+
+# Let's assume the file was the example file
+testfile <-
+    system.file(
+        "extdata",
+        "ExampleTexDocuments",
+        "exam_testing_nquestions.tex", #Test exam that doesn't require a table
+        package = "TexExamRandomizer")
+
+# To prevent modifying the file system in examples
+temporalfile <- paste(tempfile(), ".tex", sep = "")
+
+file.copy(testfile, temporalfile)
+
+opt$options$file <- temporalfile
 
 
 

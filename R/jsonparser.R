@@ -100,6 +100,11 @@ ParsePreambleForOptions <- function(preamble) {
 #' @export
 #' @examples
 #' \dontrun{
+#' #!/bin/Rscript
+#' #This example showcases the type of script this jsonparser might be used on.
+#' # You can still use it without a script,
+#' # just by adding a list that has the same names as the list provided in opt
+#' library(optparse)
 #' option_list <- list(
 #'     make_option(
 #'         c("--file"),
@@ -167,6 +172,21 @@ ParsePreambleForOptions <- function(preamble) {
 #'         OptionParser(option_list = option_list),
 #'         positional_arguments = TRUE
 #'     )
+#'
+#' # Let's assume the file was the example file
+#' testfile <-
+#'     system.file(
+#'         "extdata",
+#'         "ExampleTexDocuments",
+#'         "exam_testing_nquestions.tex", #Test exam that doesn't require a table
+#'         package = "TexExamRandomizer")
+#'
+#' # To prevent modifying the file system in examples
+#' temporalfile <- paste(tempfile(), ".tex", sep = "")
+#'
+#' file.copy(testfile, temporalfile)
+#'
+#' opt$options$file <- temporalfile
 #'
 #'
 #'
@@ -543,12 +563,12 @@ jsonexamparser <- function(opt) {
             # print("Using pdflatex")
             engine <- "pdflatex"
         }
-        CompileLatexDirEXAM(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
+        CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
 
         if (!opt$options$debug) {
             #Remove autiliary files
 
-            CompileLatexDirEXAM(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
+            CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
         }
     }
 
@@ -584,7 +604,11 @@ jsonexamparser <- function(opt) {
 #' @export
 #' @examples
 #' \dontrun{
-#'
+#' #!/bin/Rscript
+#' #This example showcases the type of script this jsonparser might be used on.
+#' # You can still use it without a script,
+#' # just by adding a list that has the same names as the list provided in opt
+#' library(optparse)
 #' option_list <- list(
 #'     make_option(
 #'         c("--file"),
@@ -599,13 +623,6 @@ jsonexamparser <- function(opt) {
 #'         default = NULL,
 #'         type = 'character',
 #'         help = "Filename of the table to break down. It overwrites the values written on the file"
-#'     ),
-#'     make_option(
-#'         c("-n", "--noutput"),
-#'         action = "store",
-#'         default = NULL,
-#'         type = "integer",
-#'         help = "Number of output Versions"
 #'     ),
 #'     make_option(
 #'         c("-s", "--seed"),
@@ -646,9 +663,24 @@ jsonexamparser <- function(opt) {
 #'         positional_arguments = TRUE
 #'     )
 #'
+#' # Let's assume the file was the example file
+#' testfile <-
+#'     system.file(
+#'         "extdata",
+#'         "ExampleTexDocuments",
+#'         "exam_testing_nquestions.tex", #Test exam that doesn't require a table
+#'         package = "TexExamRandomizer")
+#'
+#' # To prevent modifying the file system in examples
+#' temporalfile <- paste(tempfile(), ".tex", sep = "")
+#'
+#' file.copy(testfile, temporalfile)
+#'
+#' opt$options$file <- temporalfile
 #'
 #'
-#' jsonexamparser(opt)
+#'
+#' jsonhwparser(opt)
 #' }
 #'
 
@@ -862,6 +894,11 @@ jsonhwparser <- function(opt) {
 
     #### Generating Homework ####
 
+    if (!dir.exists(outputDirectory)) {
+        dir.create(outputDirectory)
+    }
+
+
     cat("Generating Homework\n")
 
     GenerateHomework(
@@ -910,12 +947,12 @@ jsonhwparser <- function(opt) {
             # print("Using pdflatex")
             engine <- "pdflatex"
         }
-        CompileLatexDirEXAM(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
+        CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
 
         if (!opt$options$debug) {
             #Remove autiliary files
 
-            CompileLatexDirEXAM(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
+            CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
         }
     }
 

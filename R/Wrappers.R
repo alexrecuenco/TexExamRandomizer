@@ -150,7 +150,7 @@ GenerateHomework <- function(
 
     cat(
       "Generating Homework",i,
-        "\nInfo:", unlist(Table[ColumnNames][i, ]),
+        # "\nInfo:", unlist(Table[ColumnNames][i, ]),
         "\n",
       file = stdout() # should this be outputted on the stderr, which could be captured in a log. ??
       )

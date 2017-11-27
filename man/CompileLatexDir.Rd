@@ -29,7 +29,7 @@ None
 }
 \description{
 This function calls latexmk, which must be part of the system commands, a directory where tex files are found and outputs their pdf and other things in the pdf.dir.out
-The functions \code{\link{CompileLatexDirEXAM}} and \code{\link{CompileLatexDirHW}} are identical wrappers of the same function, \code{\link{CompileLatexDir}}. They are only preserved "split" in two in this way for backwards compatibility reasons.
+The functions \code{\link{CompileLatexDirEXAM}} and \code{\link{CompileLatexDirHW}} are identical wrappers of the same function, \code{\link{CompileLatexDir}}. Do not use them, they are just kept for "backwards" compatibility
 }
 \details{
 Write the tex files relative paths to other files as to be read from the directory in which latex.dir.in is found
