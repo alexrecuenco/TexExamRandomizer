@@ -14,7 +14,7 @@ This function takes a series of options as obtained from \code{\link[optparse]{p
 
 From within those options, a \code{--file} option is mandatory.
 
-The file option provides a LaTeX file name in which to search for lines on the preamble \code{\%!TexExamRandomizer} within the first 200 lines.
+The file option provides a 'LaTeX' file name in which to search for lines on the preamble \code{\%!TexExamRandomizer} within the first 200 lines.
 
 With those options that it finds through tags, it passes the function \code{\link{GenerateHomework}}.
 

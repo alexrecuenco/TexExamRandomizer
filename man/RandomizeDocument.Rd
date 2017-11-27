@@ -39,7 +39,7 @@ A "section" denotes the content within a begin-end environment in the document.
 Each section is then assumed to be divided in a beginning and end parts, that should be fixed in place, and the parts denoted by the command \code{\\cmdName} as explained on \code{\link{StructureDocument}}.
 
 We will denote those parts as "items."
-Analogously to itemize environments in LaTeX.
+Analogously to itemize environments in 'LaTeX'.
 
 The purpose of this function is therefore to randomize the items from the structure, fixing the begin and end parts within a section. And then to reorder each section while keeping the pre- and post- parts fixed, and to do so recursively until we exhaust the \code{isLayerRandomized.vector}
 

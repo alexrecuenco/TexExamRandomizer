@@ -15,7 +15,7 @@ ReplaceFromTable(x, table, tableRow, columnNames, commandNames)
 
 \item{columnNames}{Character vector with the names of the columns to be used}
 
-\item{commandNames}{Character vector with the same length as \code{columnNames}. Contains the names of the LaTeX commands to be replaced.}
+\item{commandNames}{Character vector with the same length as \code{columnNames}. Contains the names of the 'LaTeX' commands to be replaced.}
 }
 \value{
 A character vector, representing the text \code{x}, where all instances of
@@ -23,7 +23,7 @@ A character vector, representing the text \code{x}, where all instances of
 \code{ \\newcommand\\commandNames[i]\{table[tableRow, columnName[i]\}}.
 }
 \description{
-Given a LaTeX file represented as a character vecotr with \code{x}, it replaces from a table the commands given by \code{commandNames}. for the values found on the table.
+Given a 'LaTeX' file represented as a character vecotr with \code{x}, it replaces from a table the commands given by \code{commandNames}. for the values found on the table.
 
 
 \code{\\newcommand\{\\commandName[i]\}\{table[tableRow, columnName[i]]\}}.

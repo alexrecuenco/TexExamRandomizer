@@ -31,7 +31,7 @@ These internal functions provide functionality to find environment names and the
 The function\code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
 }
 \details{
-In \code{\link{FindBegin}} and \code{\link{FindEnd}}, \code{cmdName} refers to the name of the command that would start an environment. Following the LaTeX convention of "\\begin\{\code{cmdName}\}" or "\\end\{\code{cmdName}\}" respectively. However, it is not a full throrough check.
+In \code{\link{FindBegin}} and \code{\link{FindEnd}}, \code{cmdName} refers to the name of the command that would start an environment. Following the 'LaTeX' convention of "\\begin\{\code{cmdName}\}" or "\\end\{\code{cmdName}\}" respectively. However, it is not a full throrough check.
 They will only be found by this class if they are only preceded by alphanumeric characters and spaces, this is to force the user to use begin and end environments at the start of a new line. TODO: CONSIDER AYBE CHANGING THIS THIS, IT IS EASY.
 
 On the other hand, in the function  \code{\link{FindCommand}}. It finds the command "\\\code{cmdName}". And in this case it is less rescrittive, as long as the line is not commented, it will find it.

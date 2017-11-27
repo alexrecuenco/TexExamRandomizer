@@ -91,7 +91,7 @@ If a  \code{\\<layerCmd>} is not found inside an environment, everything inside 
 \description{
 Function that takes a set of lines, \code{x}, that represent a file or a document. And divides it in subsequent layers, structures as a list, as described on the detail section.
 
-It assumes \code{x} is representing a LaTeX file that can be compiled as it is before we make any modifications.
+It assumes \code{x} is representing a 'LaTeX' file that can be compiled as it is before we make any modifications.
 }
 \details{
 Both \code{layersNames} and \code{layersCmd} must have the same length, since for each index, \code{i}, \code{layersNames[i]} and \code{layersCmd[i]} refer to one layer of the tree structure of the document. Consequent layers must be found inside previous layers.

@@ -19,7 +19,7 @@ The examrandomizer engine, `examrandomizer.engine`, and the `examrandomizer` scr
 system.file("exec", package = "TexExamRandomizer")
 ```
 
-As described on [Basic use](Basic use), the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to write options for those functions directly on the LaTeX document by invoquing json-like options. 
+As described on [Basic use](Basic use), the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to write options for those functions directly on the 'LaTeX' document by invoquing json-like options. 
 
 Within the first two hundred lines it searches for tags `TexExamRandomizer`:
 
@@ -147,11 +147,11 @@ All these options are defaulted to false unless they are given.
     
 * `"correcttag"`: Default -> `["CorrectChoice"]`
     
-    The LaTeX command name (`\correcttag`) that will mark a choice as being correct if it is found somewhere within the text of that choice. 
+    The 'LaTeX' command name (`\correcttag`) that will mark a choice as being correct if it is found somewhere within the text of that choice. 
 
 * `"wrongtag"`:  Default -> `["choice"]`
 
-    The LaTeX command name (`\wrongtag`) that will mark a choice as being incorrect if found somewhere within the text of that choice. 
+    The 'LaTeX' command name (`\wrongtag`) that will mark a choice as being incorrect if found somewhere within the text of that choice. 
     
     If this command is given a value that can't be found in the document, those sections will be left out form the answer sheet, and only the correct ones will be display
     
@@ -165,7 +165,7 @@ With that, I mean that the personalization will occur for every row on the table
 
 ## How the personalization is done
 
-We rely in using LaTeX macros to personalize documents. We search within the preamble for `newcommand` tags,
+We rely in using 'LaTeX' macros to personalize documents. We search within the preamble for `newcommand` tags,
 
      \newcommand{\commandname}{commandvalue}
 
@@ -175,7 +175,7 @@ And once found, we change the command value to the new personalized value. A com
     
 An once personalization occurs, each version will replace the `\Name` command value for the value required for each version.
 
-*Note that if you don't want the engine to modify the macro you are using, you can instead of using `\newcommand`, you could use `\newcommand*` or `\def` . The asterisk `*` has a special meaning in LaTeX, but with the simple use that we are giving this commands, that can't have options, that is irrelevant..*
+*Note that if you don't want the engine to modify the macro you are using, you can instead of using `\newcommand`, you could use `\newcommand*` or `\def` . The asterisk `*` has a special meaning in 'LaTeX', but with the simple use that we are giving this commands, that can't have options, that is irrelevant..*
 
 ## Reserved command names
 
@@ -216,7 +216,7 @@ If on the other hand, you want the value of the command to be chosen between a l
     
 And the program will choose randomly between one of those values.
 
-The most useful way to use this option, in my opinion, is just to generate one numbe from which to seed the pgf/TikZ random seed, and then use native tools in LaTeX to randomize anything you want. In that way you have much more control, however, for some people it might be more comfortable and more clear to specify it directly in the tags.
+The most useful way to use this option, in my opinion, is just to generate one numbe from which to seed the pgf/TikZ random seed, and then use native tools in 'LaTeX' to randomize anything you want. In that way you have much more control, however, for some people it might be more comfortable and more clear to specify it directly in the tags.
 
 ### Extra information.
 

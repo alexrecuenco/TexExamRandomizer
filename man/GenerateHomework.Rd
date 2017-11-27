@@ -30,11 +30,11 @@ Where the number of zeros is the minimum number of zeros required to have a diff
 Character vector with the file names of the output.
 }
 \description{
-This function personalizes a LaTeX document with data from a table,
+This function personalizes a 'LaTeX' document with data from a table,
 generating a new file for each row which is saved on the \code{outputDirectory}.
 }
 \details{
-The command names should be LaTeX commands that are being defined through
+The command names should be 'LaTeX' commands that are being defined through
 
  \code{\\newcommand\{\\<CommandNames[i]>\}\{<previous definition>\}}
 
@@ -44,7 +44,7 @@ The command names should be LaTeX commands that are being defined through
 
  And it will output one file for each command.
 
- The intent of this function was to populate information into a generic homework to personalize it for every student using LaTeX.
+ The intent of this function was to populate information into a generic homework to personalize it for every student using 'LaTeX'.
  (It actually generalizes to maybe other problems).
 }
 \seealso{

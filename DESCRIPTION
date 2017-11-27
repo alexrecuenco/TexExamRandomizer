@@ -1,11 +1,11 @@
 Package: TexExamRandomizer
 Type: Package
-Title: Personalizes and Randomizes Exams Written in LaTeX
+Title: Personalizes and Randomizes Exams Written in 'LaTeX'
 Version: 1.2.1
 Author: Alejandro Gonzalez Recuenco
 Maintainer: Alejandro Gonzalez Recuenco <alejandrogonzalezrecuenco@gmail.com>
-Description: Randomizing exams with LaTeX.
-    If you can compile your main document with LaTeX, the program should be able to compile the randomized
+Description: Randomizing exams with 'LaTeX'.
+    If you can compile your main document with 'LaTeX', the program should be able to compile the randomized
     versions without much extra effort when creating the document.
 URL: https://github.com/alexrecuenco/TexExamRandomizer
 BugReports: https://github.com/alexrecuenco/TexExamRandomizer/issues

@@ -89,9 +89,9 @@ In Summary, the sketch of the tree structure would be:
 If a  \code{\\<layerCmd>} is not found inside an environment, everything inside that environment is thrown into the begin_layerName part and instead of the numbered environments, an empty character list is added in the middle, with name \code{empty_<layerCmd>} section.
 }
 \description{
-Function that takes a character vector, \code{x}, representing a LaTeX file and it outputs a tree structure with the structure specified by \code{layersNames} and \code{layersCmd}.
+Function that takes a character vector, \code{x}, representing a 'LaTeX' file and it outputs a tree structure with the structure specified by \code{layersNames} and \code{layersCmd}.
 
-It assumes \code{x} is representing a LaTeX file that can has been checked it compiles apropitaly before we make anymodification.
+It assumes \code{x} is representing a 'LaTeX' file that can has been checked it compiles apropitaly before we make anymodification.
 
 Note however that this function only moves lines around, it doesn't split a line in two.
 }

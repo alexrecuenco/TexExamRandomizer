@@ -20,7 +20,7 @@ A character vector, with the preamble, replacing all instances of
 }
 \description{
 This functions gets a character vector in which each element represents a line of
-a preamble of a LaTeX document, and it replaces the definition of the command \code{\\commandName} to have the value \code{commandValue}.
+a preamble of a 'LaTeX' document, and it replaces the definition of the command \code{\\commandName} to have the value \code{commandValue}.
 }
 \details{
 It only modifies the value of the command by replacing instances of
@@ -34,10 +34,10 @@ Keep in mind that both \code{commandName} and \code{commandValue} are placed dir
 If you want to "hide" a certain definition of a command from being found and replaced by this function,  simply define it by using \code{\\def} or \code{\\newcommand*} or a \code{\\renewcommand} when you define them.
 
 
-Make sure you are using a one-line definition in commands that you want replaced, since this won't be able to detect commands that are defined in multiple lines in LaTeX.
+Make sure you are using a one-line definition in commands that you want replaced, since this won't be able to detect commands that are defined in multiple lines in 'LaTeX'.
 
-Also, note how certain invalid things in LaTeX would still be matched by this regex,
-however you should find those errors before you start using this program since those errors would not allow you to compile the LaTeX document on the first place.
+Also, note how certain invalid things in 'LaTeX' would still be matched by this regex,
+however you should find those errors before you start using this program since those errors would not allow you to compile the 'LaTeX' document on the first place.
 
 Lastly, if it doesn't find a command on the document, it silently ignores it.
 }
