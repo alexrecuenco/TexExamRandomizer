@@ -7,6 +7,5 @@ r:
  - devel
 os:
  - osx
-disable_homebrew: true
 r_github_packages:
   - hadley/devtools
