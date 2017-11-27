@@ -69,7 +69,7 @@ IsWellSectioned <- function(u, v) {
 #' @param x string vector, each line should represent one line of a text file or a section fo a text file.
 #' @param cmdName Command to search for in \code{x}.
 #'
-#' @details In \code{\link{FindBegin}} and \code{\link{FindEnd}}, \code{cmdName} refers to the name of the command that would start an environment. Following the LaTeX convention of "\\begin\{\code{cmdName}\}" or "\\end\{\code{cmdName}\}" respectively. However, it is not a full throrough check.
+#' @details In \code{\link{FindBegin}} and \code{\link{FindEnd}}, \code{cmdName} refers to the name of the command that would start an environment. Following the 'LaTeX' convention of "\\begin\{\code{cmdName}\}" or "\\end\{\code{cmdName}\}" respectively. However, it is not a full throrough check.
 #' They will only be found by this class if they are only preceded by alphanumeric characters and spaces, this is to force the user to use begin and end environments at the start of a new line. TODO: CONSIDER AYBE CHANGING THIS THIS, IT IS EASY.
 #'
 #' On the other hand, in the function  \code{\link{FindCommand}}. It finds the command "\\\code{cmdName}". And in this case it is less rescrittive, as long as the line is not commented, it will find it.
@@ -192,9 +192,9 @@ DivideFile <- function(x) {
 
 #' @title Structure Document
 #'
-#' @description Function that takes a character vector, \code{x}, representing a LaTeX file and it outputs a tree structure with the structure specified by \code{layersNames} and \code{layersCmd}.
+#' @description Function that takes a character vector, \code{x}, representing a 'LaTeX' file and it outputs a tree structure with the structure specified by \code{layersNames} and \code{layersCmd}.
 #'
-#' It assumes \code{x} is representing a LaTeX file that can has been checked it compiles apropitaly before we make anymodification.
+#' It assumes \code{x} is representing a 'LaTeX' file that can has been checked it compiles apropitaly before we make anymodification.
 #'
 #' Note however that this function only moves lines around, it doesn't split a line in two.
 #' @inheritParams DivideFile

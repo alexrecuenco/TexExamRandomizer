@@ -4,12 +4,12 @@
 \name{TexExamRandomizer-package}
 \alias{TexExamRandomizer}
 \alias{TexExamRandomizer-package}
-\title{Generating Random Exams from LaTeX documents}
+\title{Generating Random Exams from 'LaTeX' documents}
 \description{
-This package is designed with exams and homework created in LaTeX in mind. It allows to randomize and personalize exams and homework and it aids the user with grading them.
+This package is designed with exams and homework created in 'LaTeX' in mind. It allows to randomize and personalize exams and homework and it aids the user with grading them.
 }
 \details{
-If you are using the exam class from LaTeX already, it is likely that this program works as it is.
+If you are using the exam class from 'LaTeX' already, it is likely that this program works as it is.
 
 If you just want to randomize your exams,
 \itemize{

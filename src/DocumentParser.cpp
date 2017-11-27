@@ -197,7 +197,7 @@ private:
 //' @title Compile Document
 //' @description Function that takes a set of lines, \code{x}, that represent a file or a document. And divides it in subsequent layers, structures as a list, as described on the detail section.
 //'
-//' It assumes \code{x} is representing a LaTeX file that can be compiled as it is before we make any modifications.
+//' It assumes \code{x} is representing a 'LaTeX' file that can be compiled as it is before we make any modifications.
 //' @inheritParams DivideFile
 //' @param layersNames A character vector, with each element representating the environment name to be searched as \code{cmdName} as describe in \code{\link{FindBegin}} and \code{\link{FindEnd}}
 //' @param layersCmd A character vector, with the same length as \code{layersNames}. with each element representing the environment command to be serached as \code{cmdName} as described in \code{\link{FindCommand}}.

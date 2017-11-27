@@ -6,10 +6,10 @@
 
 #### FUNCTIONS ####
 #' @title Generate Homework
-#' @description This function personalizes a LaTeX document with data from a table,
+#' @description This function personalizes a 'LaTeX' document with data from a table,
 #' generating a new file for each row which is saved on the \code{outputDirectory}.
 #'
-#' @details The command names should be LaTeX commands that are being defined through
+#' @details The command names should be 'LaTeX' commands that are being defined through
 #'
 #'  \code{\\newcommand\{\\<CommandNames[i]>\}\{<previous definition>\}}
 #'
@@ -19,7 +19,7 @@
 #'
 #'  And it will output one file for each command.
 #'
-#'  The intent of this function was to populate information into a generic homework to personalize it for every student using LaTeX.
+#'  The intent of this function was to populate information into a generic homework to personalize it for every student using 'LaTeX'.
 #'  (It actually generalizes to maybe other problems).
 #' @inheritParams DivideFile
 #' @param Table Data frame from which to extract the information
@@ -150,7 +150,7 @@ GenerateHomework <- function(
 
     cat(
       "Generating Homework",i,
-        "\nInfo:", unlist(Table[ColumnNames][i, ]),
+        # "\nInfo:", unlist(Table[ColumnNames][i, ]),
         "\n",
       file = stdout() # should this be outputted on the stderr, which could be captured in a log. ??
       )

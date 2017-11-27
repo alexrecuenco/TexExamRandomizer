@@ -1,11 +1,11 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
 # (C) 2017
-#' Generating Random Exams from LaTeX documents
+#' Generating Random Exams from 'LaTeX' documents
 #'
-#' This package is designed with exams and homework created in LaTeX in mind. It allows to randomize and personalize exams and homework and it aids the user with grading them.
+#' This package is designed with exams and homework created in 'LaTeX' in mind. It allows to randomize and personalize exams and homework and it aids the user with grading them.
 #'
-#' If you are using the exam class from LaTeX already, it is likely that this program works as it is.
+#' If you are using the exam class from 'LaTeX' already, it is likely that this program works as it is.
 #'
 #' If you just want to randomize your exams,
 #' \itemize{

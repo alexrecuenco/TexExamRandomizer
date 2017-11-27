@@ -6,7 +6,7 @@
 #' @title ReplacePreambleCommand
 #' @description
 #' This functions gets a character vector in which each element represents a line of
-#' a preamble of a LaTeX document, and it replaces the definition of the command \code{\\commandName} to have the value \code{commandValue}.
+#' a preamble of a 'LaTeX' document, and it replaces the definition of the command \code{\\commandName} to have the value \code{commandValue}.
 #' @details It only modifies the value of the command by replacing instances of
 #'
 #' \code{\\newcommand\{\\commandName\}\{<previous definition>\}} with instances of
@@ -19,10 +19,10 @@
 #' If you want to "hide" a certain definition of a command from being found and replaced by this function,  simply define it by using \code{\\def} or \code{\\newcommand*} or a \code{\\renewcommand} when you define them.
 #'
 #'
-#' Make sure you are using a one-line definition in commands that you want replaced, since this won't be able to detect commands that are defined in multiple lines in LaTeX.
+#' Make sure you are using a one-line definition in commands that you want replaced, since this won't be able to detect commands that are defined in multiple lines in 'LaTeX'.
 #'
-#' Also, note how certain invalid things in LaTeX would still be matched by this regex,
-#' however you should find those errors before you start using this program since those errors would not allow you to compile the LaTeX document on the first place.
+#' Also, note how certain invalid things in 'LaTeX' would still be matched by this regex,
+#' however you should find those errors before you start using this program since those errors would not allow you to compile the 'LaTeX' document on the first place.
 #'
 #' Lastly, if it doesn't find a command on the document, it silently ignores it.
 #'
@@ -69,7 +69,7 @@ ReplacePreambleCommand <- function(x, commandName, commandValue){
 #' @title ReplaceFromTable
 #' @description
 #'
-#' Given a LaTeX file represented as a character vecotr with \code{x}, it replaces from a table the commands given by \code{commandNames}. for the values found on the table.
+#' Given a 'LaTeX' file represented as a character vecotr with \code{x}, it replaces from a table the commands given by \code{commandNames}. for the values found on the table.
 #'
 #'
 #' \code{\\newcommand\{\\commandName[i]\}\{table[tableRow, columnName[i]]\}}.
@@ -81,7 +81,7 @@ ReplacePreambleCommand <- function(x, commandName, commandValue){
 #' @param table Data frame from which to extract the information
 #' @param tableRow Integer, row of the \code{table} to be used
 #' @param columnNames Character vector with the names of the columns to be used
-#' @param commandNames Character vector with the same length as \code{columnNames}. Contains the names of the LaTeX commands to be replaced.
+#' @param commandNames Character vector with the same length as \code{columnNames}. Contains the names of the 'LaTeX' commands to be replaced.
 #' @return A character vector, representing the text \code{x}, where all instances of
 #' \code{ \\newcommand\\commandNames[i]\{<random text>\}} have been replaced with
 #' \code{ \\newcommand\\commandNames[i]\{table[tableRow, columnName[i]\}}.
