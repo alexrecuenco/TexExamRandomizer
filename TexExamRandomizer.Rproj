@@ -10,7 +10,7 @@ NumSpacesForTab: 4
 Encoding: UTF-8
 
 RnwWeave: knitr
-'LaTeX': pdf'LaTeX'
+LaTeX: pdfLaTeX
 
 StripTrailingWhitespace: Yes
 
