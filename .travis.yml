@@ -4,8 +4,10 @@ cache: packages
 r:
  - oldrel
  - release
- - devel
+ - devel # Devtools fails to download in developer mode for some reason
+
+before_install:
+ - if [[ "$TRAVIS_OS_NAME" = 'linux' ]]; then mkdir ~/.R && echo 'CXX1X=g++ -std=c++0x -g -O2 -fPIC' > ~/.R/Makevars; fi
 os:
+ - linux
  - osx
-r_github_packages:
-  - hadley/devtools
