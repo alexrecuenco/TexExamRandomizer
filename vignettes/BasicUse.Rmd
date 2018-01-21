@@ -90,7 +90,7 @@ If you have the expertise or you are willing to put some time to fix these issue
 
 * The program assumes that you are already able to compile the 'LaTeX' document as it is. If your document is already ill-formed, the program will just run happily and create something that it is even more ill-formed.
 
-* You can't use nested itemize environments. If you don't change the names of the environments between the different layers. All names that correspond to the structure of your 'LaTeX' document must be named uniquely.
+* You can't use nested itemize environments unless you don't change the names of the environments between the different layers. All names that correspond to the structure of your 'LaTeX' document must be named uniquely.
 
     + For example, the exam class uses as the top layer "itemize environment" the environment name "questions" and the item command "`\question`". But the next layer is referred to with an environment named "choices", being "`\choice`" or "`\CorrectChoice`" the item namse. This structure is perfectly correct to use for this program. 
     
