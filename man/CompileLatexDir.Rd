@@ -20,7 +20,9 @@ CompileLatexDirHW(pdf.dir.out, latex.dir.in, engine = "xelatex",
 
 \item{latex.dir.in}{Directory where all the tex files are found.}
 
-\item{engine:}{If xelatex is not this option, pdfmaker is called.}
+\item{engine:}{Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+
+       \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.}
 
 \item{compile.dir:}{Directory from which compilation is invoked, if not specified, the directory we are compiling will be from where we do it. (This is specially usefull since we want to mantain the same relative paths from the main file).}
 }
@@ -34,6 +36,21 @@ The functions \code{\link{CompileLatexDirEXAM}} and \code{\link{CompileLatexDirH
 \details{
 Write the tex files relative paths to other files as to be read from the directory in which latex.dir.in is found
 This function is intended to be use to compile a bunch of files which are stemmed from an original one. That is why the directory
+}
+\examples{
+
+input_folder <- system.file(
+    "extdata",
+    "ExampleTexDocuments",
+    package = "TexExamRandomizer")
+
+
+TexExamRandomizer::CompileLatexDir(
+    pdf.dir.out = tempdir(),
+    engine= "pdf",
+    latex.dir.in = input_folder,
+    extracmdoptions = "-time")
+
 }
 \author{
 Alejandro Recuenco \email{alejandrogonzalezrecuenco@gmail.com}

@@ -15,55 +15,64 @@
 #'
 #' @param pdf.dir.out Directory where the pdf output will be sent to
 #' @param latex.dir.in Directory where all the tex files are found.
-#' @param engine: If xelatex is not this option, pdfmaker is called.
+#' @param engine: Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+#'
+#'        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.
 #
 #' @param compile.dir: Directory from which compilation is invoked, if not specified, the directory we are compiling will be from where we do it. (This is specially usefull since we want to mantain the same relative paths from the main file).
 #' @return None
 #' @author Alejandro Recuenco \email{alejandrogonzalezrecuenco@@gmail.com}
-#' @keywords internal
-#'
+#' @export
 #'
 #' @family Compilation functions
+#' @examples
+#'
+#' input_folder <- system.file(
+#'     "extdata",
+#'     "ExampleTexDocuments",
+#'     package = "TexExamRandomizer")
+#'
+#'
+#' TexExamRandomizer::CompileLatexDir(
+#'     pdf.dir.out = tempdir(),
+#'     engine= "pdf",
+#'     latex.dir.in = input_folder,
+#'     extracmdoptions = "-time")
+#'
 
 CompileLatexDir <- function(pdf.dir.out, latex.dir.in, engine = "xelatex", compile.dir = NULL, extracmdoptions = NULL){
-  # TODO: add other commands, not only XeLaTex
+
+  full_pdf_output_dir <- normalizePath(pdf.dir.out)
+  full_tex_input_dir <- normalizePath(latex.dir.in)
 
 
-
-  # print(normalizePath(pdf.dir.out))
-  FullPdfDir <- normalizePath(pdf.dir.out)
-  FullTexDir <- normalizePath(latex.dir.in)
-
-
-  if (engine == "xelatex") {
-    cmd_option <- "-xelatex"
-  } else {
-    cmd_option <- "-pdf"
+  if        (engine == "xelatex")  {
+      cmd_option   <- "-xelatex"
+  } else if (engine == "lualatex") {
+      cmd_option   <- "-lualatex"
+  } else if (engine == "latex")    {
+      cmd_option   <- "-latex"
+  } else                           {
+      cmd_option   <- "-pdf"
   }
 
-  cmdarg_outputdir <- sprintf("-outdir='%s'", FullPdfDir)
+  # TODO: try to incorporate match.arg to simplify the code here
 
+  cmdarg_outputdir <- sprintf("-outdir=%s", shQuote(full_pdf_output_dir))
 
-  cmdarg_input_tex <-
-    sprintf(
-      "'%s'*.tex",
-      sub(
-        pattern = "a$",
-        x = file.path(FullTexDir, "a"),
-        replacement = ""
-      )
-    )
-  #Adding the a at the end with file.path and then replacing it with "" is a trick to have the file.path decide how to add the / or \ depending on the operating system, without us doing the checking.
-  # 'Directory/'*.tex will be sent to the command line... probably we need to be more careful with quotations and so on
+  cmdarg_input_tex_files <- shQuote(
+      list.files(path = full_tex_input_dir, pattern = "\\.tex$", full.names = T)
+  )
 
   extracmdoptions <- c(cmd_option, extracmdoptions)
   othercmdoption <- "-quiet"
 
 
   cmdArgs <- c(cmdarg_outputdir,
-               cmdarg_input_tex,
                extracmdoptions,
-               othercmdoption)
+               othercmdoption,
+               cmdarg_input_tex_files
+               )
   if (is.null(compile.dir)) {
     compile.dir <- latex.dir.in
   }
@@ -72,7 +81,7 @@ CompileLatexDir <- function(pdf.dir.out, latex.dir.in, engine = "xelatex", compi
   if (!is.null(owd)) {
     on.exit(setwd(owd), add = TRUE)
     setwd(compile.dir)
-    #After the on.exit, if it causes an error setwd(owd) is still called, do not put the set before the on.exit....
+    #After the on.exit, if it causes an error setwd(owd) is still called, do not place the setwd before the on.exit.
   } else {
     warning("Current working directory is unknown, can't change the compilation directory and return to the same directory afterwards...")
   }
