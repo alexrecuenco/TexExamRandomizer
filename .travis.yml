@@ -12,4 +12,4 @@ os:
  - osx
 
 before_install:
- - if [[ "$TRAVIS_OS_NAME" = 'linux' ]]; then mkdir ~/.R && echo 'CXX1X=g++ -std=c++0x -g -O2 -fPIC' > ~/.R/Makevars; fi
+ - if [[ "$TRAVIS_OS_NAME" = 'linux' ]]; then sudo apt-get install libxml2-dev && sudo apt-get install libcurl4-openssl-dev; fi
