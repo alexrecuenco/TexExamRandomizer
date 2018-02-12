@@ -33,6 +33,3 @@ addons:
 
 env:
   - COMPILER=gcc-4.9
-
-before_install:
-  - source travis/before-install.sh
