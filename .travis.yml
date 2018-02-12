@@ -1,8 +1,8 @@
 language: r
-sudo: false
+sudo: true
 cache: packages
 warnings_are_errors: false
-r_build_args: --verbose
+r_build_args: #--verbose
 r:
  - oldrel
  - release
