@@ -12,9 +12,17 @@ os:
  - osx
 
 before_install:
- - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
- - if [[ "$TRAVIS_OS_NAME" = 'linux' ]]; then sudo apt-get install libxml2-dev && sudo apt-get install libcurl4-openssl-dev; fi
-
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 100
+  - mkdir -p ~/.R
+  - echo "VkVSPS01CkNDPWdjYyQoVkVSKSAtc3RkPWMxMSAKQ1hYPWcrKyQoVkVSKQpTSExJQl9DWFhMRD1nKyskKFZFUikKRkM9Z2ZvcnRyYW4KRjc3PWdmb3J0cmFuCg==" | base64 -d > ~/.R/Makevars
+  - cat ~/.R/Makevars
+# The base 64 string is
+#VER=-5
+#CC=gcc$(VER) -std=c11
+#CXX=g++$(VER)
+#SHLIB_CXXLD=g++$(VER)
+#FC=gfortran
+#F77=gfortran
 addons:
   apt:
     sources:
@@ -22,3 +30,9 @@ addons:
     packages:
       - gcc-4.9
       - g++-4.9
+
+env:
+  - COMPILER=gcc-4.9
+
+before_install:
+  - source travis/before-install.sh
