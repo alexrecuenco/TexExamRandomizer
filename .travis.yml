@@ -1,0 +1,35 @@
+language: r
+sudo: required
+cache: packages
+warnings_are_errors: false
+r_build_args: #--verbose
+r:
+    - oldrel
+    - release
+ #- devel # Devtools fails to download in developer mode for some reason
+os:
+    - linux
+    - osx
+
+before_install:
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir -p ~/.R; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K" | base64 --decode > ~/.R/Makevars; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat ~/.R/Makevars; fi
+# The base 64 string is
+#VER=-4.9
+#CC=gcc$(VER) -std=c11
+#CXX=g++$(VER)
+#SHLIB_CXXLD=g++$(VER)
+#FC=gfortran
+#F77=gfortran
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+
+env:
+  - COMPILER=gcc-4.9

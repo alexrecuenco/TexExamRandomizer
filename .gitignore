@@ -5,3 +5,5 @@ inst/doc
 .RData
 
 .Rhistory
+
+*.gz
