@@ -14,7 +14,7 @@ os:
 before_install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100
   - mkdir -p ~/.R
-  - echo "VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K==" | base64 -d > ~/.R/Makevars
+  - echo "VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K==" | base64 --decode > ~/.R/Makevars
   - cat ~/.R/Makevars
 # The base 64 string is
 #VER=-5
