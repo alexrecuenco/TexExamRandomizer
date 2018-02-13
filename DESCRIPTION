@@ -1,7 +1,7 @@
 Package: TexExamRandomizer
 Type: Package
 Title: Personalizes and Randomizes Exams Written in 'LaTeX'
-Version: 1.2.2
+Version: 1.2.3
 Author: Alejandro Gonzalez Recuenco
 Maintainer: Alejandro Gonzalez Recuenco <alejandrogonzalezrecuenco@gmail.com>
 Description: Randomizing exams with 'LaTeX'.
@@ -28,4 +28,6 @@ LinkingTo: Rcpp
 RoxygenNote: 6.0.1
 ByteCompile: true
 VignetteBuilder: knitr
-SystemRequirements: C++11
+SystemRequirements: C++11,
+    A modern compiler (>=gcc-4.9), 
+    And latexmk is necessary to compile all output documents with the functions provided by this package
