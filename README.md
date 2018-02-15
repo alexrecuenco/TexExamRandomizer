@@ -1,6 +1,7 @@
 # TexExamRandomizer 
 [![CRAN](https://www.r-pkg.org/badges/version/TexExamRandomizer)](https://cran.r-project.org/package=TexExamRandomizer)
 [![Build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=master)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](http://cranlogs.r-pkg.org/badges/TexExamRandomizer)](http://www.r-pkg.org/pkg/TexExamRandomizer)
 
 [comment]:?color=brightgreen 
@@ -15,7 +16,7 @@ An example of options could be:
 - Select the number of output questions
 
 
-The package provides some vignettes that go through the options that are available for the users. Goign through them might give a nice overview of the available options.
+The package provides some vignettes that go through the options that are available for the users. Going through them might give a nice overview of the available options.
 
 There are also examples of different exam formats inside `inst/extdata`, that might be good to look at before deciding whether to use it or not.
 
