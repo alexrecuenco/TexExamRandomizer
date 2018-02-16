@@ -22,7 +22,8 @@ Depends:
 Suggests:
     optparse,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 License: MIT + file LICENSE
 LinkingTo: Rcpp
 RoxygenNote: 6.0.1
