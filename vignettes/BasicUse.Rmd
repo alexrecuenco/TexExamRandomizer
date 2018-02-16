@@ -13,13 +13,77 @@ This vignette describes the basic way of randomizing exams using this package.
 
 # What problem is this software adressing
 
-When you are using 'LaTeX' together with some software to randomize or personalize exams individually, most tools usually require for you to think ahead. It requires you to keep in mind exactly how the structure might change when randomizing the exam, and more importantly, it restricts the formatting that you are allowed to use. You are only allowed to use a certain naming convention, and in many cases it also only allow for one section to be randomize. When usually you would prefer to keep questions about a certain topic together.
+When you are creating a LaTeX exam or homework. I have found in my own teaching that these are the things that I am more interested in.
 
-This package and the corresponding scripts and TexShop engines that come distributed with it tries to fix this. 
+(@) Using a software that doesn't require me to get out of my LaTeX environment to randomize it
+(@) To have options to add personalized information for each individual student (Name, class, favorite color, etc)
+(@) To have a program that adapts to my structure, rather than adapting my structure to the program
+(@) To be able to toggle on and off randomization on different depth levels of the structure
+(@) To produce automatically an answer sheet, that can be used to gather statistics about the exam itself.
 
-It can basically understand any 'LaTeX' "itemize" structure that follows the `\begin{envname}` `\end{envname}` that has a certain command that produces "items" within that environemnt `\item`. 
+This package and the corresponding scripts and TexShop engines that come distributed with it tries to address these issues.
 
-It is capable of understanding structures that are more nested as well, with only a few [caveats](#caveats).
+In essence, it will understand any 'LaTeX' "itemize" structure that follows the `\begin{envname}` `\end{envname}` structure, with some kind of command that produces "items" within that environemnt `\item`. 
+It will create a tree with that nested structure that you define, and it will randomize it keeping the root of the tree fixed on each branch.
+
+The default structure that it will understand is that of the exam class, but it is heavily customizable. 
+
+This packages comes together with a script that can already be used to randomize exams and a couple of `.engines` to be used with TexShop engines
+
+# How to start
+
+If you are using the exam class structure on your exam already, that is already the default, and you will only need to specify the output number. ^[If you are using another structure, it is explained in the advance section how to tell the program what are you using. `vignette("ExamOptions", package = "TexExamRandomizer")`]
+
+```{latex}
+\documentclass{exam}
+...
+\begin{document}
+
+\begin{questions}
+    \question bla, lippsum bla
+    \begin{choices}
+    \choice bla blah
+
+    \choice ehem 
+    \CorrectChoice and
+    more 
+    text
+    
+    \choice last choice
+    
+    \end{choices}
+    ...
+    \question
+\end{questions}
+
+\end{document}
+       
+```
+
+# Instalation
+
+All the executables that are necessary are found inside the `exec/` folder. Which you can find by running 
+```{r echo=TRUE}
+system.file("exec", package = "TexExamRandomizer")
+```
+
+(@) Copy the `examrandomizer` executable somewhere in your `$PATH`. Copy the `gradeexamrandomizer` as well on the same location if you are intending to use the automatic grading.
+(@) Then, drop the `examrandomizer.engine` on the TexShop engine library (Usually it is found in ~/Library/TeXShop/Engines)^[If you are using another 'LaTeX' distribution that doesn't allow .engine scripts, you will have to use the `examrandomizer` directly on the terminal, which is not difficult]. 
+(@) Once you have done that, just add a line in your 'LaTeX' document within the first 200 lines of your documen that says (let's assume you want 5 versions)^[The double quotes around `noutput` are necessary]
+
+    `%! TexExamRandomizer = {"noutput" = 5}`
+(@)  Choose the `examrandomizer` engine from the TexShop engines list. 
+
++ Alternatively, if you just want to use it directly from the terminal, or your TeX typesetting system doesn't allow `.engine` files simply say: 
+    
+        examrandomizer --file <filename.tex> --compile
+(@) You will find in the location where your tex file was found a folder with the answer sheets and the compiled documents. (Don't loose the answer sheets please.)
+
+
+For a more detailed explanation of all the options given by the interface, please look at 
+```{r eval=FALSE}
+vignette("ExamOptions", package = "TexExamRandomizer")
+```
 
 ## Personalization
 
@@ -30,58 +94,51 @@ It also adds a layer of personalization as well by being able to modify the valu
     + Or, choosing a number between 1 and a 1000 for a certain problem.
 * You can add information that is found on a table you have.
     + For example, a table in which you store the names of the students, their class, their ID or a few more details. They will find that information added on the answer sheets where you want.
-    
-# How to start
-
-Enough with the explanations, if you are using the exam class structure on your exam already, `(questions, question; choices, choice|Correctchoice)`,  it is fairly easy to adapt. ^[If you are using another structure, it is explained in the advance section how to tell the program what are you using. `vignette("ExamOptions", package = "TexExamRandomizer")`]
-
-To get started:
-
-(@) Add the `examrandomizer` executable somewhere in your path that can be found by the terminal. 
-(@) Then, drop the `examrandomizer.engine` on the TexShop engine library (Usually it is found in ~/Library/TeXShop/Engines)^[If you are using another 'LaTeX' distribution that doesn't allow .engine scripts, you will have to do it on the terminal]. 
-(@) Once you have done that, just add a line in your 'LaTeX' document within the first 200 lines of your documen that says (let's assume you want 5 versions)
-
-    `%! TexExamRandomizer = {"noutput" = 5}`
-(@)  Run the examrandomizer engine choosing it from the TexShop engines list. Keep in mind that double quotes within the json format is mandatory.
-
-+ Alternatively, if you just want to use it directly from the terminal, or your TeX typesetting system doesn't allow `.engine` files simply say: 
-    
-        examrandomizer --file <filename.tex> --compile
-(@) You will find in the location where your tex file was found a folder with the answer sheets and the compiled documents. (Don't loose the answer sheets please.)
-
-All these scripts can be found in the exec/ folder. Which you can find by running 
-```{r echo=TRUE}
-system.file("exec", package = "TexExamRandomizer")
-```
-
-For a more detailed explanation of all the options, please look at 
-```{r eval=FALSE}
-vignette("ExamOptions", package = "TexExamRandomizer")
-```
-
-## Grading
-
-If you are planning to also use the automatic grading then, after your students respond to the exams:
-
-(@) Add as well the `gradeexamrandomizer` to a path that can be found by the terminal.
-(@) You have to collect the student's responses in a table. Where the columns of the responses should be named "Q 1", "Q 2", etc. 
-    * To give extra points, if you write a column called "Extra Points" those points will be added to the total grade.
-(@) Run the following command
-
-        gradeexamrandomizer --resp <student responses csv> --answer <fullanswersheet csv>
-(@) You will find a `_Graded.csv` and a `_Stats.csv` file in the same folder as the student's responses with the grades and stats of the exam.
-
-For a more detailed explanation, 
-```{r eval=FALSE}
-vignette("GradingExams", package = "TexExamRandomizer")
-```
-
 
 ## Creating your own scripts
 
 The implementation of a json-like parser within the document certainly makes it a lot more concise to use. However, that is simply a wrapper of the underlying functions that define this R library.
 
-If you want to use the full functionality, and try to that library, you might want to start by looking at the functions `CreateRandomExams` and `GenerateHomework`. Grading is done by calling `GradeExams` and `ObtainExamStats`... although if your exam structure is a bit wild it might have issues trying to grade it.
+If you want to use the full functionality and try to create your own scripts, instead of using the functions I provide. You might want to start by looking at:
+- The functions `CreateRandomExams` and `GenerateHomework` for randomizing homework and exams
+- Grading is done by calling `GradeExams` and `ObtainExamStats`... although if your exam structure is a bit wild it might have issues trying to understand it.
+
+
+# Examples
+
+Examples of how to write your latex document, and the options that you can use, can be found on 
+
+```{r}
+system.file("extdata", "ExampleTexDocuments", package = "TexExamRandomizer")
+```
+
+1. `exam_testing_nquestions.tex` showcases how to pick a set of questions from each option
+2. `exam_testing_norandomizing.tex` showcases how to stop certain sections form being randomized
+3. `exam_testing_itemize.tex` showcases how to change the names of environments
+
+    
+
+
+# Grading
+
+If you are planning to also use the automatic grading then, after your students respond to the exams:
+
+(@) Add as well the `gradeexamrandomizer` to a folder included in `$PATH`.
+(@) You have to collect the student's responses in a table. Where the columns of the responses should be named "Q 1", "Q 2", etc. 
+    * To give extra points, if you write a column called "Extra Points" those points will be added to the total grade.
+(@) In that same folder, you need to copy the "full answer sheet"" that you got from compiling the exam with this software.
+(@) Run the following command
+
+        gradeexamrandomizer --resp <student responses csv> --answer <fullanswersheet csv>
+(@) You will find a `*_Graded.csv` and a `*_Stats.csv` file in the same folder as the student's responses with the grades and stats of the exam.
+
+For a more detailed explanation, look at the following vignette
+```{r eval=FALSE}
+vignette("GradingExams", package = "TexExamRandomizer")
+```
+
+You can find on this vignette how to omit questions after you have already created the exam, or how to change the correct choices.
+
 
 
 # Known "issues" {#caveats}
@@ -96,6 +153,6 @@ If you have the expertise or you are willing to put some time to fix these issue
     
     + However, using the "enumerate" and "itemize" environments by nesting them, since they both use the `\item` command would break the document. 
     
-* The second caveat is, this program **ONLY** reorders the lines. So if you have multiple answeres written on the same line it won't detect them. Simply separate them in different lines.
+* The second caveat is, this program **ONLY** reorders the lines. Therefore, if you have multiple `\choices` written on the same line, it won't detect them. Simply write them in different lines.
 
     I think mostly everyone already does this, since it presents a more clean look on your documents. (Remember that you can always write % at the end of a line, and 'LaTeX' will ignore then the `\n` at the end of that line, but this program won't)

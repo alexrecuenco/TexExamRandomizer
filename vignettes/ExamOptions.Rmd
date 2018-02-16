@@ -1,7 +1,7 @@
 ---
 title: "Randomizer options"
 author: "Alejandro Gonzalez Recuenco"
-date: "11/13/2017"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Randomizer options}
@@ -13,33 +13,38 @@ vignette: >
 
 # Introduction to the engine
 
-The examrandomizer engine, `examrandomizer.engine`, and the `examrandomizer` script that it requires can be found in the exec/ folder of this library.  Remember to place the `examrandomizer` script in a place where it can be found from the terminal.
+The examrandomizer engine, `examrandomizer.engine`, and the `examrandomizer` script that it requires can be found in the `exec/` folder of this library.  You first will need to copy the `examrandomizer` script in a folder found by your `$PATH`.
 
 ```{r echo=TRUE}
 system.file("exec", package = "TexExamRandomizer")
 ```
 
-As described on [Basic use](Basic use), the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to write options for those functions directly on the 'LaTeX' document by invoquing json-like options. 
+As described on [Basic use](Basic use), the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to also write options directly in the document for those functions directly on the 'LaTeX' document by invoquing json-like options. 
 
-Within the first two hundred lines it searches for tags `TexExamRandomizer`:
+In essence, within the first two hundred lines it searches for tags `TexExamRandomizer`:
 
-    %! TexExamRandomizer = {"optionname0" : "optionvalue0", "optionname1" : "optionvalue1", ...}
-    
+```{latex}
+%! TexExamRandomizer = {"optionname0" : "optionvalue0", "optionname1" : "optionvalue1", ...}
+```
+
 Note a few things:
 
-(@) A `TexExamRandomizer` tag must be on just one line. However, you can have multiple lines displaying a range of options for each of them
+(@) A `TexExamRandomizer` tag must be just **one line**. However, you can have multiple lines displaying a range of options for each of them
 (@) **Double quotes are mandatory**
 
-As an example, the complete set of options that I usually place on the preamble will look something similar to this:
+As an overview of how it might look with a complete set of options. The options I usually use are:
 
+```{latex}
     %! TexExamRandomizer = {"noutput":3, "nquestions": 13}
     %! TexExamRandomizer = {"table":"TestClass.csv"}
     %! TexExamRandomizer = {"randominfo": {"randomnumber":1000, "parity":["even", "odd"]}}
     %! TexExamRandomizer = {"extrainfo":{"class":"Class"}}
     %! TexExamRandomizer = {"extrainfo":{"rollnumber":"Roll Number","nickname":"Nickname"}}
+```
 
-And I will also include in the preamble the following items to catch all the relevant information and be able to use it in the document.
+In the preamble it requires the following `\newcommand` definitions. In each exam that it generates, it will be changed accordingly to the options given.
 
+```{latex}
     \newcommand{\randomnumber}{r1--1000} % Will be replaced by a number between 1 and 1000
     \newcommand{\parity}{evenorodd} % Will be replaced by the word "even" or the word "odd"
     \newcommand{\class}{classholder}
@@ -47,17 +52,20 @@ And I will also include in the preamble the following items to catch all the rel
     \newcommand{\nickname}{StudentNickname}
     \newcommand{\myversion}{0} % This will be replaced by the version number
     \newcommand\rseed{seed} % This will be replaced by the seed used in R to seed the randomization process
-
+```
     
+Don't worry if you don't understand yet how you specify these options yet, that is going to be explained below.
     
 # Specifying options
+
+These options relate to the executables that are provided in the `exec\` folder. 
 
 To describe the options, I will distinguish between options that can also be altered through the command line and those that can't.
 I will write the name of the option preceded by "`-`" or "`--`" if they are command line options, while they will be in double quotes if the option can be written with a `TexExamRandomizer` tag within the document.
 
 To give options through the command line interface, you must specify first the option name and then the value, for example `--file filename.tex`
 
-Keep in mind that options given to the terminal have priority over options written in the document itself.
+Keep in mind that options given to the terminal have **priority** over options written in the document itself.
 
 
 ## Command-line-only options
@@ -67,43 +75,12 @@ Keep in mind that options given to the terminal have priority over options writt
 All these options are defaulted to false unless they are given.
 
 * `--homework`: If this option is given, It only applies the [personalization on the preamble](#table), it doesn't try to randomize the document order.
-* `-c`/`--compile`: If this option is given, it compiles the documents to pdfs in the output folder using latexmk.
+* `-c`/`--compile`: If this option is given, it compiles the documents to pdfs in the output folder using `latexmk`.
 * `--xelatex`: Should the engine used be xelatex. Otherwise, it will use the pdflatex engine
 * `--debug`: If this option is true, it doesnt remove auxiliary files
 
 
 ## General options
-
-* `--table`/`"table"` : Default -> `NULL`
-
-    Table file from which to extract info to personalize the document. If this parameter is not given it requires to give the "noutput". 
-    
-    Look at [Options to personalize documents](#table) for more information in how documents can be personalized with a table.
-
-    **IMPORTANT: The table file must be specified relative to the location of the tex document being compiled, not relative to the executable location**
-    
-    
-* `-n`/`--noutput`/`"noutput"`: 
-
-    Number of output versions. If this paramenter is not given, it requires the "table" parameter to be given. It will understand the number of output versions to be the same as the number of rows in the table.
-
-* `-q`/`--nquestions`/`"nquestions"`:  Default -> `"max"`
-
-    Number of "items" in the outer most layer (Usually it will be the number of questions).
-    (@) If the value is a number, it will remove questions from the output versions making all exams have that number of questions.
-        + All sections must have at least one question, therefore, if you have 5 sections, you can't specify the nquestions to be 4 in the output.
-    (@) If the value is a vector, for example `"nquestions":[3, 4, 5, 6]`, the vector must then:
-        + Have the same length as the number of sections
-        + Have all values be non-zero values
-    
-    (@) If the value can't be coherced to numeric (For example, "max"), it keeps all the questions form the exam.
-    
-
-* `-s`/`--seed`/`"seed"` : Default -> `NULL`
-
-    Seed to intialize the randomization. 
-        - If no value of seed is found it looks for `compileInfo.txt` in the output folder where it is going to dump the tex files. If it doesn't find that file, it uses `Sys.time()` to create a seed.
-            This prevents changing the seed between runs of the same file.
 
 * `"layernames"`/`"layercmd"` : 
 
@@ -111,10 +88,10 @@ All these options are defaulted to false unless they are given.
     
     `{"layernames":["questions", "choices"], "layercmd": ["question", "(choice|CorrectChoice)"]}`
 
-    A character vector with the names of the nested layer environments. It recognizes simple regex to allow multiple commands.
-    For example, the default value `(choice|CorrectChoice)` can be read as the command being either `\choice` or `\CorrectChoice`.
+    A character vector with the names of the nested layer environments. It recognizes simple regular expressions.
+    For example, the default value of `layercmd`, `(choice|CorrectChoice)`, can be read as the command being either `\choice` or `\CorrectChoice`.
     
-    The default values follows the standard exam class defaults. Therefore, it would detect appropiatly the following structure.
+    The default values follows the standard exam class defaults. Therefore, it would detect appropriately the following structure.
 
         \begin{questions}
             \question
@@ -138,9 +115,9 @@ All these options are defaulted to false unless they are given.
     Given the `layernames` and `layercmd`, the values of `reordersections` and `reorderitems` should be the same length.
     
     + Every entry refers to a layer, from outer-most layer to inner-most layer
-    + Notice that the values on the arrays must be "true" or "false", **Case sensitive**.
-    + By reordering "items", it specifically means reordering each itim within one environment and reordering them.
-    + By reordering "sections", it specifically means to reorder the order of the environments, from `\begin{}` to `\end{}`.
+    + Notice that the values on the arrays must be "true" or "false".
+    + By reordering "items", it means reordering each item within one environment and reordering them.
+    + By reordering "sections", it means to reorder the order of the environments, from `\begin{}` to `\end{}`.
         - It should be clear that everything **before the first section** will be kept fixed.
           
             This is done to prevent the main explanation from getting dragged with the first section. If you *really* want to avoid some text from getting left behind, for some specific use you might have just place it on the same line as the `\begin{}` environment is on.
@@ -153,8 +130,40 @@ All these options are defaulted to false unless they are given.
 
     The 'LaTeX' command name (`\wrongtag`) that will mark a choice as being incorrect if found somewhere within the text of that choice. 
     
-    If this command is given a value that can't be found in the document, those sections will be left out form the answer sheet, and only the correct ones will be display
+    If `\wrongtag` can't be found on a question, that question will be ignored when generating the answer sheet. Only the correct ones will be found on the answer sheet.
     
+* `--table`/`"table"` : Default -> `NULL`
+
+    Table file from which to extract info to personalize the document. If this parameter is not given it requires to give the "noutput". 
+    
+    Look at [Options to personalize documents](#table) for more information in how documents can be personalized with a table.
+
+    **IMPORTANT: The table file must be specified relative to the location of the tex document being compiled, not relative to the executable location**
+    
+    
+* `-n`/`--noutput`/`"noutput"`: 
+
+    Number of output versions. If this paramenter is not given, it requires the "table" parameter to be given. In that case, it will understand the number of output versions to be the same as the number of rows in the table.
+
+* `-q`/`--nquestions`/`"nquestions"`:  Default -> `"max"`
+
+    Number of "items" in the outer most layer of the exam structure (Usually it will be the number of questions).
+    (@) If the value is a number, it will remove questions from the output versions making all exams have that number of questions.
+        + All sections must have at least one question, therefore, if you have 5 sections, you can't specify the nquestions to be 4 in the output.
+    (@) If the value is a vector, for example `"nquestions":[3, 4, 5, 6]`, the vector must then:
+        + Have the same length as the number of sections
+        + Have all values be non-zero values
+    
+    (@) If the value can't be coherced to numeric (For example, "max"), it keeps all the questions form the exam.
+    
+
+* `-s`/`--seed`/`"seed"` : Default -> `NULL`
+
+    Seed to intialize the randomization. 
+        - If no value of seed is found it looks for `compileInfo.txt` in the output folder where it is going to dump the tex files. If it doesn't find that file, it uses `Sys.time()` to create a seed.
+            This prevents changing the seed between runs of the same file.
+
+ 
     
 # Personalizing a document {#table}
 

@@ -1,7 +1,7 @@
 ---
 title: "Grading Exams"
 author: "Alejandro Gonzalez Recuenco"
-date: "11/17/2017"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Grading Exams}
@@ -10,7 +10,7 @@ vignette: >
 ---
 
 
-This vignette describes how to grade an exam using the script found on the exec/ folder. You can find where this script is found by typing on an R terminal.
+This vignette describes how to grade an exam using the script found on the `exec/` folder. You can find where this script is found by typing on an R terminal.
 
 ```{r echo=TRUE}
     system.file("exec", package = "TexExamRandomizer")
@@ -56,7 +56,7 @@ kable(answersTable[1:5,], caption = "Answer sheet, the last two rows must be nam
 
 ###  What if I wrote some questions wrong and I noticed too late? I already printed the exams
 
-If for some reason you relize one question is incorrectly written, but it is too late to rewrite the exam, find the original answer sheet in the `fullanswersheet.csv` (The rows with version number 0). Then, remove the lines from the answer sheet that refer to the original question you want to ignore. (Keep a backup of the answer sheet just in case). 
+If you realize one question is incorrectly written, but it is too late to rewrite the exam, find the original answer sheet in the `fullanswersheet.csv` (The rows with version number 0). Then, remove the lines from the answer sheet that refer to the question you want to ignore. (Keep a backup of the answer sheet, just in case). 
 
 When the students answer the exam. Tell them to write *any* answer in that question, it will be ignored by the program.
 
