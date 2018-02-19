@@ -37,7 +37,9 @@
 #'     pdf.dir.out = tempdir(),
 #'     engine= "pdf",
 #'     latex.dir.in = input_folder,
-#'     extracmdoptions = "-time")
+#'     extracmdoptions = "-C")
+#'     # The "-C" option makes sure we simulate we use the command, but the command
+#'     # doesnt run compiling the document, it only tries to clean up
 #'
 
 CompileLatexDir <- function(pdf.dir.out, latex.dir.in, engine = "xelatex", compile.dir = NULL, extracmdoptions = NULL){
