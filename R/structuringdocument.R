@@ -105,7 +105,7 @@ FindBegin <- function(x, cmdName) {
     )
 }
 
-#'The function\code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
+#'The function \code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
 #' @inheritParams FindStructure
 #' @return Returns a numeric vector, indicating each occurrence of a start of a environment that looks like \\end\{\code{cmdName}\}
 #'
