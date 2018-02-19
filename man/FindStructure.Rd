@@ -28,7 +28,7 @@ Returns a numeric vector, indicating each occurrence of the command \\\code{cmdN
 \description{
 These internal functions provide functionality to find environment names and their use
 
-The function\code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
+The function \code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
 }
 \details{
 In \code{\link{FindBegin}} and \code{\link{FindEnd}}, \code{cmdName} refers to the name of the command that would start an environment. Following the 'LaTeX' convention of "\\begin\{\code{cmdName}\}" or "\\end\{\code{cmdName}\}" respectively. However, it is not a full throrough check.
