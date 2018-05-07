@@ -5,6 +5,12 @@
 ####
 ####
 
+
+
+#### TODO: Refactor the opt parsing with functions that grab the files and each individual option, adoes the error checking and simply just returns the option value, to prevent having double functions everywhere. ####
+####
+
+
 #' @title ParsePreambleForOptions
 #'
 #' @description This function parses a preamble of a document trying to read options handed to the package TexExamRandomizer to be used in compiling.
@@ -201,7 +207,7 @@ jsonexamparser <- function(opt) {
     if (is.na(opt$options$file)) {
         stop("Main Tex file not passed")
     } else {
-        texFile <- opt$options$file
+        texFile <- path.expand(opt$options$file)
         cat(
             texFile,
             '...exist =',
@@ -233,11 +239,16 @@ jsonexamparser <- function(opt) {
     preamble_options <- ParsePreambleForOptions(x[1:200])
 
 
-    if (is.null(opt$options$table)) {
-        tableFile <- preamble_options$table
+    if (!is.null(opt$options$table)) {
+        tableFile <- path.expand(opt$options$table)
+    } else if (!is.null(preamble_options$table)) {
+        tableFile <- path.expand(preamble_options$table)
     } else {
-        tableFile <- opt$options$table
+        tableFile <- NULL
     }
+
+
+    ## preamble_options$table should be null if it is not there already. Therefore, we are guaranteed to have a tableFile that at least is NULL
 
 
     if (is.null(opt$options$noutput)) {
@@ -721,9 +732,9 @@ jsonhwparser <- function(opt) {
 
 
     if (!is.null(opt$options$table)) {
-        tableFile <- opt$options$table
+        tableFile <- path.expand(opt$options$table)
     } else if (!is.null(preamble_options$table)) {
-        tableFile <- preamble_options$table
+        tableFile <- path.expand(preamble_options$table)
     } else {
         tableFile <- NULL
     }
