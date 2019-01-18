@@ -56,3 +56,4 @@ Other Extracting information: \code{\link{ConstructAnswerSheet}},
   \code{\link{CountNumberOfSections}},
   \code{\link{FindExamAnswers}}
 }
+\concept{Extracting information}

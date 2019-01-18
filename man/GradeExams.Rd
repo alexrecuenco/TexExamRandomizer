@@ -141,3 +141,4 @@ GradedStudentTable <-
 \seealso{
 Other Grading Exams: \code{\link{ObtainExamStats}}
 }
+\concept{Grading Exams}

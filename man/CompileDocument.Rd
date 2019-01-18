@@ -106,4 +106,5 @@ Other Structuring Document: \code{\link{DivideFile}},
   \code{\link{IsWellSectioned}},
   \code{\link{StructureDocument}}
 }
+\concept{Structuring Document}
 \keyword{internal}

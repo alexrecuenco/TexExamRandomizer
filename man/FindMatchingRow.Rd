@@ -27,4 +27,5 @@ It outputs a logical vector identifying which rows in \code{DF} have the same va
 
 It will output \code{logical(0)} if the \code{rowtoMatch} is null, or if is a data frame with 0 rows.
 }
+\concept{Grading exams core}
 \keyword{internal}

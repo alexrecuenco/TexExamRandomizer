@@ -477,12 +477,16 @@ jsonexamparser <- function(opt) {
 
     cat("Generating Exams\n")
 
+    # TODO: Add if(debug) print this
+    #
+    # cat("Commands are ", layerNames, layerCmd, columns, cmds, "\n", sep = "\t")
+
     CreateRandomExams(
-        x,
-        layerNames,
-        layerCmd,
-        outputBaseName,
-        outputDirectory,
+        x = x,
+        layersNames = layerNames,
+        layersCmd = layerCmd,
+        outputBaseName = outputBaseName,
+        outputDirectory = outputDirectory,
         cmdReorder = cmdReorder,
         sectionReorder = sectionReorder,
         infoTable = ClassTable,

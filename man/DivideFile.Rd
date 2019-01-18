@@ -37,3 +37,4 @@ Other Structuring Document: \code{\link{CompileDocument}},
   \code{\link{IsWellSectioned}},
   \code{\link{StructureDocument}}
 }
+\concept{Structuring Document}

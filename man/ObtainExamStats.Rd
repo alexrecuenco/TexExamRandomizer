@@ -83,3 +83,4 @@ ExamStats <-
 \seealso{
 Other Grading Exams: \code{\link{GradeExams}}
 }
+\concept{Grading Exams}

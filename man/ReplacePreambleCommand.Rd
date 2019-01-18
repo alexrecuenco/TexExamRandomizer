@@ -47,3 +47,4 @@ new_preamble <- ReplacePreambleCommand( TexExamRandomizer::testdoc$preamble, "ni
 \seealso{
 Other Preamble adjustment: \code{\link{ReplaceFromTable}}
 }
+\concept{Preamble adjustment}
