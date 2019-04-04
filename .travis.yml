@@ -45,6 +45,7 @@ addons:
 
 #env
 env:
+  - COMPILER=gcc-4.9
   global:
   - _R_CHECK_FORCE_SUGGESTS_=false
   - MAKEFLAGS="-j 2"
