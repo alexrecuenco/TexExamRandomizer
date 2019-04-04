@@ -55,7 +55,7 @@ document_test_default <-
         ),
         layername = c("questions", "choices"),
         layercmd = c("question", "(choice|CorrectChoice)"),
-        v1resultfile = system.file("tests","document_test_default.rds", package = "TexExamRandomizer")
+        v1resultfile = "document_test_default.rds"
     )
 
 document_test_4 <-
@@ -90,7 +90,7 @@ document_test_4 <-
             ),
         layername = c("layerone", "layertwo", "layerthree", "layerfour"),
         layercmd = c("layeronecmd", "layertwocmd", "layerthreecmd", "layerfourcmd"),
-        v1resultfile = system.file("tests","document_test_4.rds", package = "TexExamRandomizer")
+        v1resultfile = "document_test_4.rds"
 
     )
 

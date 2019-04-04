@@ -11,6 +11,7 @@ URL: https://github.com/alexrecuenco/TexExamRandomizer
 BugReports: https://github.com/alexrecuenco/TexExamRandomizer/issues
 Encoding: UTF-8
 LazyData: true
+SystemRequirements: C++11
 Imports:
     Rcpp (>= 0.12.13),
     assertthat,
@@ -29,6 +30,3 @@ LinkingTo: Rcpp
 RoxygenNote: 6.1.0
 ByteCompile: true
 VignetteBuilder: knitr
-SystemRequirements: C++11,
-    A modern compiler (>=gcc-4.9), 
-    And latexmk is necessary to compile all output documents with the functions provided by this package
