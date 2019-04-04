@@ -1,2 +1,5 @@
 PKG_CXX_STD=CXX11
-CXX=clang++
+CXX=g++-4.9
+CXX1X=g++-4.9
+CXX11=g++-4.9
+CXX14=g++-4.9
