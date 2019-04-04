@@ -5,10 +5,21 @@
 
 # DO NOT CHANGE THE CODE BELOW
 before_install:
-- R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
-- R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
-- R -q -e 'remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages()'
-- R -q -e 'tic::before_install()'
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir -p ~/.R; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K" | base64 --decode > ~/.R/Makevars; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat ~/.R/Makevars; fi
+    - R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
+    - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
+    - R -q -e 'remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages()'
+    - R -q -e 'tic::before_install()'
+# VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K, The base 64 string is
+#VER=-4.9
+#CC=gcc$(VER) -std=c11
+#CXX=g++$(VER)
+#SHLIB_CXXLD=g++$(VER)
+#FC=gfortran
+#F77=gfortran
+
 install: R -q -e 'tic::install()'
 after_install: R -q -e 'tic::after_install()'
 before_script: R -q -e 'tic::before_script()'
