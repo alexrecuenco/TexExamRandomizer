@@ -34,6 +34,15 @@ dist: trusty
 cache: packages
 latex: false
 
+# addons
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+
 #env
 env:
   global:
