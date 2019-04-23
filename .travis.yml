@@ -1,28 +1,40 @@
-language: r
-sudo: required
-cache: packages
-warnings_are_errors: false
-r_build_args: #--verbose
-r:
-    - oldrel
-    - release
- #- devel # Devtools fails to download in developer mode for some reason
-os:
-    - linux
-    - osx
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# Default configuration for use with tic package
+# tic documentation to get started: https://ropenscilabs.github.io/tic/
+# Usually you shouldn't need to change the first part of the file
 
+# DO NOT CHANGE THE CODE BELOW
 before_install:
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then mkdir -p ~/.R; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "VkVSPS00LjkKQ0M9Z2NjJChWRVIpIC1zdGQ9YzExIApDWFg9ZysrJChWRVIpClNITElCX0NYWExEPWcrKyQoVkVSKQpGQz1nZm9ydHJhbgpGNzc9Z2ZvcnRyYW4K" | base64 --decode > ~/.R/Makevars; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cat ~/.R/Makevars; fi
-# The base 64 string is
-#VER=-4.9
-#CC=gcc$(VER) -std=c11
-#CXX=g++$(VER)
-#SHLIB_CXXLD=g++$(VER)
-#FC=gfortran
-#F77=gfortran
+- R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
+- R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
+- R -q -e 'remotes::install_github("ropenscilabs/tic"); tic::prepare_all_stages()'
+- R -q -e 'tic::before_install()'
+install: R -q -e 'tic::install()'
+after_install: R -q -e 'tic::after_install()'
+before_script: R -q -e 'tic::before_script()'
+script: R -q -e 'tic::script()'
+after_success: R -q -e 'tic::after_success()'
+after_failure: R -q -e 'tic::after_failure()'
+before_deploy: R -q -e 'tic::before_deploy()'
+deploy:
+  provider: script
+  script: R -q -e 'tic::deploy()'
+  on:
+    all_branches: true
+after_deploy: R -q -e 'tic::after_deploy()'
+after_script: R -q -e 'tic::after_script()'
+# DO NOT CHANGE THE CODE ABOVE
+
+# Custom parts:
+
+# Header
+language: r
+sudo: false
+dist: trusty
+cache: packages
+latex: false
+
+# addons
 addons:
   apt:
     sources:
@@ -31,5 +43,12 @@ addons:
       - gcc-4.9
       - g++-4.9
 
+#env
 env:
   - COMPILER=gcc-4.9
+  global:
+  - _R_CHECK_FORCE_SUGGESTS_=false
+  - MAKEFLAGS="-j 2"
+
+#services
+services:

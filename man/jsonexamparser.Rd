@@ -25,7 +25,7 @@ All the options can be found on
 
 \code{vignette("ExamOptions", package = "TexExamRandomizer")}
 
-The options that are called "command line" options in the vignette are those that are given to the function through \code{opt}, the rest of the options are read directly froo the document specified with \code{--file <filename>}
+The options that are called "command line" options in the vignette are those that are given to the function through \code{opt}, the rest of the options are read directly from the document specified with \code{--file <filename>}
 }
 \examples{
 \dontrun{

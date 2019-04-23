@@ -1,4 +1,7 @@
-^.*\.Rproj$
+^tic\.R$
+^appveyor\.yml$
+^\.travis\.yml$
+\^.*\.Rproj$
 ^.*\.travis\.yml$
 ^\.Rproj\.user$
 ^.*\.gitignore$
