@@ -22,7 +22,7 @@ If more than one option with the same name is given, it tries to concatenate tho
 However, it doesn't do that recursively, only if the names of the outer layer are the same... therefore, in nested structure you might end up with a list that have twice the same name. Keep in mind that in those cases, the default behaviour of R is to select the first one.
 }
 \seealso{
-Other jsoncompiler: \code{\link{jsonexamparser}},
-  \code{\link{jsonhwparser}}
+Other jsoncompiler: \code{\link{compilation_options}},
+  \code{\link{jsonexamparser}}, \code{\link{jsonhwparser}}
 }
 \concept{jsoncompiler}

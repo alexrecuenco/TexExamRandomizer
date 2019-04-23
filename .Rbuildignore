@@ -1,7 +1,7 @@
 ^tic\.R$
 ^appveyor\.yml$
 ^\.travis\.yml$
-\^.*\.Rproj$
+^.*\.Rproj$
 ^.*\.travis\.yml$
 ^\.Rproj\.user$
 ^.*\.gitignore$
@@ -10,3 +10,5 @@
 ^.*\.log$
 ^.*\.synctex\.gz$
 ^.*ExampleTexDocuments(/.*){2,}$
+^docs/.*
+^TODO.md$

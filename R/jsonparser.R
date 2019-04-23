@@ -982,6 +982,8 @@ jsonhwparser <- function(opt) {
 #'
 #' }
 #'
+#' The options can be defined directly given by using the other parameters to this function. (Note that those paramenters have precedence)
+#'
 #' @keywords internal
 #'
 compile_latex_directory <- function(options = list(), input_directory, output_directory = input_directory, main_directory) {
@@ -997,7 +999,7 @@ compile_latex_directory <- function(options = list(), input_directory, output_di
         }
 
         if (options$compile) {
-            if (opt$options$xelatex) {
+            if (options$xelatex) {
                 engine <- "xelatex"
             } else {
                 # print("Using pdflatex")
@@ -1010,7 +1012,7 @@ compile_latex_directory <- function(options = list(), input_directory, output_di
                 engine = engine
             )
 
-            if (!opt$options$debug) {
+            if (!options$debug) {
                 #Remove autiliary files
 
                 CompileLatexDir(
@@ -1064,7 +1066,6 @@ compile_latex_directory <- function(options = list(), input_directory, output_di
 #' jsonhwparser(opt)
 #'
 #' }
-
 compilation_options <- function(file=NULL, table=NULL, noutput=NULL, nquestions=NULL, seed=NULL, compile=NULL, xelatex=NULL, debug = NULL) {
 
 
