@@ -1,4 +1,4 @@
-add_package_checks()
+do_package_checks()
 
 LinuxSetup <- R6::R6Class(
     "LinuxSetup", inherit = TicStep,

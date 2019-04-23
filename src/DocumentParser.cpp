@@ -26,8 +26,8 @@ public:
 
         last_layer = _sectionName.size() - 1;
         for(int i = 0; i< _sectionName.size(); i++){
-            sectionName.push_back(as<std::string>(_sectionName[i]));
-            commandName.push_back(as<std::string>(_commandName[i]));
+            sectionName.push_back(std::string(_sectionName[i]));
+            commandName.push_back(std::string(_commandName[i]));
             start_regex.push_back(std::regex("^[^%]*\\\\begin\\{"   + sectionName[i] + "\\}"));
             end_regex.push_back  (std::regex("^[^%]*\\\\end\\{"     + sectionName[i] + "\\}"));
             cmd_regex.push_back  (std::regex("^[^%]*\\\\"           + commandName[i] + "([^a-zA-Z]|$)"));
@@ -47,7 +47,7 @@ public:
 
         for(StringVector::const_iterator it_check = it_beg; it_check != it_end; it_check++){
 
-            std::string line_text = as<std::string>(*it_check);
+            std::string line_text = std::string(*it_check);
 
             if (!isInside && isBeginLine(line_text, layer)) {
                 if (section == 0){
@@ -113,6 +113,7 @@ public:
             }
 
         }
+
 
         if  (it_last == it_beg){
             list[namePrior(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_end);
@@ -294,6 +295,7 @@ List CompileDocument(
     if(layersNames.size() != layersCmd.size() || layersNames.size() == 0){
         stop("layersNames and layersCmd don't have the correct format");
     }
+    //warning("Test version");
 
     LayerCompiler compiler(layersNames, layersCmd);
 

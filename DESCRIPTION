@@ -1,7 +1,7 @@
 Package: TexExamRandomizer
 Type: Package
 Title: Personalizes and Randomizes Exams Written in 'LaTeX'
-Version: 1.2.5
+Version: 1.2.6
 Author: Alejandro Gonzalez Recuenco
 Maintainer: Alejandro Gonzalez Recuenco <alejandrogonzalezrecuenco@gmail.com>
 Description: Randomizing exams with 'LaTeX'.

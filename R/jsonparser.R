@@ -4,6 +4,8 @@
 #### Parsing document for JSON TexExamRandomizer directions
 ####
 ####
+####
+#### TODO: FIX THE REPETITION OF THIS CODE 2 TIMES, AND PLACE IT ALL IN ONE SPOT... BOTH FUNCTIONS ARE BASICALLY INDENTICAL
 
 
 
@@ -56,7 +58,7 @@ ParsePreambleForOptions <- function(preamble) {
 
     for (line in json_info) {
 
-         tryCatch(
+        tryCatch(
             {
                 optionList <-
                     connectList(
@@ -540,7 +542,7 @@ jsonexamparser <- function(opt) {
                 list(Rseed =  seed),
                 opt$options,
                 preamble_options
-                )
+            )
         ),
         con = fileMetaData
     )
@@ -568,24 +570,17 @@ jsonexamparser <- function(opt) {
         row.names = FALSE
     )
 
-    #### Compile resulting files ####
+    #### Compiling resulting tex files ####
 
 
-    if (opt$options$compile) {
-        if (opt$options$xelatex) {
-            engine <- "xelatex"
-        } else {
-            # print("Using pdflatex")
-            engine <- "pdflatex"
-        }
-        CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
 
-        if (!opt$options$debug) {
-            #Remove autiliary files
+    # input and output directory are the same, until we have a better interface:
+    compile_latex_directory(
+        options = opt$options,
+        input_directory = outputDirectory,
+        main_directory = MainDirectory
+    )
 
-            CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
-        }
-    }
 
 }
 
@@ -952,23 +947,141 @@ jsonhwparser <- function(opt) {
         path = fileMetaData
     )
 
-
     #### Compiling resulting tex files ####
 
-    if (opt$options$compile) {
-        if (opt$options$xelatex) {
-            engine <- "xelatex"
-        } else {
-            # print("Using pdflatex")
-            engine <- "pdflatex"
+
+    # input and output directory are the same, until we have a better interface:
+    compile_latex_directory(
+        options = opt$options,
+        input_directory = outputDirectory,
+        main_directory = MainDirectory
+    )
+
+}
+
+
+
+#' Compile LatexDirectory
+#'
+#' Internal function wrapping the options to compile a directory holding some text files into pdf files.
+#'
+#' @param options See details
+#' @param input_directory Input directory where the tex files are found
+#' @param output_directory Output directory where  the pdf files will be placed
+#' @param main_directory Directory we will compile from
+#'
+#' @return No return value
+#'
+#' @details
+#' `options` is a list containing the possible options. The possible options are
+#'
+#' \itemize{
+#' \item compile: Should it compile the tex files
+#' \item debug: Should we use debugging information. Otherwise, it will clean up the temporary files created by latex.
+#' \item xelatex: Should it use the xelatex engine
+#'
+#' }
+#'
+#' The options can be defined directly given by using the other parameters to this function. (Note that those paramenters have precedence)
+#'
+#' @keywords internal
+#'
+compile_latex_directory <- function(options = list(), input_directory, output_directory = input_directory, main_directory) {
+        ####
+        if (!is.logical(options$compile)) {
+            options$compile <- FALSE
         }
-        CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine)
+        if (!is.logical(options$debug)) {
+            options$debug <- FALSE
+        }
+        if (!is.logical(options$xelatex)) {
+            options$xelatex <- FALSE
+        }
 
-        if (!opt$options$debug) {
-            #Remove autiliary files
+        if (options$compile) {
+            if (options$xelatex) {
+                engine <- "xelatex"
+            } else {
+                # print("Using pdflatex")
+                engine <- "pdflatex"
+            }
+            CompileLatexDir(
+                pdf.dir.out = output_directory,
+                latex.dir.in = input_directory,
+                compile.dir = main_directory,
+                engine = engine
+            )
 
-            CompileLatexDir(outputDirectory, outputDirectory, compile.dir = MainDirectory, engine = engine, extracmdoptions = "-c")
+            if (!options$debug) {
+                #Remove autiliary files
+
+                CompileLatexDir(
+                    pdf.dir.out = output_directory,
+                    latex.dir.in = input_directory,
+                    compile.dir = main_directory,
+                    engine = engine,
+                    extracmdoptions = "-c"
+                )
+            }
         }
     }
 
+
+
+
+
+
+#' Define compilations options
+#'
+#' This function provides the compilation options that can be passed to the jsonexamparser
+#'
+#' @param file Input file name
+#' @param table Input table with student name and information
+#' @param noutput Number of *different* exams/homeworks produced
+#' @param nquestions Number of questions on each exam (Only on exams)
+#' @param seed Pseudorandom seed to be used (This allows the result to be deterministic)
+#' @param compile If TRUE, it tries to compile
+#' @param xelatex If TRUE, it uses `XeLaTeX`
+#' @param debug If TRUE, it doesn't remove auxiliary files generated by `LaTeX` when compiling
+#'
+#' @return A list of options to be passed to \code{\link{jsonexamparser}}, \code{\link{jsonhwparser}}.
+#' @export
+#'
+#' @family jsoncompiler
+#'
+#' @examples
+#' \dontrun{
+#'
+#' file <-
+#'     system.file(
+#'         "extdata",
+#'         "ExampleTexDocuments",
+#'         "exam_testing_nquestions.tex", #Test exam that doesn't require a table
+#'         package = "TexExamRandomizer")
+#'
+#' temporalfile <- paste(tempfile(), ".tex", sep = "")
+#'
+#' file.copy(file, temporalfile)
+#' opt <- compilation_options(file = temporalfile)
+#' jsonhwparser(opt)
+#'
+#' }
+compilation_options <- function(file=NULL, table=NULL, noutput=NULL, nquestions=NULL, seed=NULL, compile=NULL, xelatex=NULL, debug = NULL) {
+
+
+    list(
+        options = list(
+            file = file,
+            table = table,
+            noutput = noutput,
+            nquestions = nquestions,
+            seed = seed,
+            compile = compile,
+            xelatex = xelatex,
+            debug = debug
+        )
+    )
+
 }
+
+
