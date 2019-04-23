@@ -1,6 +1,7 @@
 # TexExamRandomizer 
 [![CRAN](https://www.r-pkg.org/badges/version/TexExamRandomizer)](https://cran.r-project.org/package=TexExamRandomizer)
-[![Build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=master)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/b022205jic1xg8r3?svg=true)](https://ci.appveyor.com/project/alexrecuenco/texexamrandomizer)
+[![Travis build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=master)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](http://cranlogs.r-pkg.org/badges/TexExamRandomizer)](http://www.r-pkg.org/pkg/TexExamRandomizer)
 
