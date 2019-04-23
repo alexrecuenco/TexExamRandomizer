@@ -119,3 +119,4 @@ Other Structuring Document: \code{\link{CompileDocument}},
   \code{\link{DivideFile}}, \code{\link{FindStructure}},
   \code{\link{IsWellSectioned}}
 }
+\concept{Structuring Document}

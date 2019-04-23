@@ -52,4 +52,5 @@ Other Extracting information: \code{\link{ConstructAnswerSheet}},
   \code{\link{CountNumberOfSections}},
   \code{\link{GenerateShortAnswerSheet}}
 }
+\concept{Extracting information}
 \keyword{internal}

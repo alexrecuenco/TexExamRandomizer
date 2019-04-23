@@ -25,3 +25,4 @@ However, it doesn't do that recursively, only if the names of the outer layer ar
 Other jsoncompiler: \code{\link{jsonexamparser}},
   \code{\link{jsonhwparser}}
 }
+\concept{jsoncompiler}

@@ -111,3 +111,4 @@ jsonhwparser(opt)
 Other jsoncompiler: \code{\link{ParsePreambleForOptions}},
   \code{\link{jsonexamparser}}
 }
+\concept{jsoncompiler}

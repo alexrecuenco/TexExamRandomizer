@@ -28,4 +28,5 @@ Other Structuring Document: \code{\link{CompileDocument}},
 \author{
 Alejandro Recuenco \email{alejandrogonzalezrecuenco@gmail.com}
 }
+\concept{Structuring Document}
 \keyword{internal}

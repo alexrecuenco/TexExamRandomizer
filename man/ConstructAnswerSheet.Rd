@@ -75,3 +75,4 @@ Other Extracting information: \code{\link{CountNumberOfSections}},
   \code{\link{FindExamAnswers}},
   \code{\link{GenerateShortAnswerSheet}}
 }
+\concept{Extracting information}

@@ -31,4 +31,5 @@ Other Extracting information: \code{\link{ConstructAnswerSheet}},
   \code{\link{FindExamAnswers}},
   \code{\link{GenerateShortAnswerSheet}}
 }
+\concept{Extracting information}
 \keyword{internal}

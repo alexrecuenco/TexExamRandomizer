@@ -153,3 +153,4 @@ for (i in 1:length(compiledanswers)) {
 \seealso{
 \code{\link{GradeExams}} and \code{\link{ObtainExamStats}} for examples on how to use the output of this function to obtain more detailed information.
 }
+\concept{Grading exams core Grading Exams}
