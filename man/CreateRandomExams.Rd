@@ -4,13 +4,23 @@
 \alias{CreateRandomExams}
 \title{CreateRandomExams}
 \usage{
-CreateRandomExams(x, layersNames = c("questions", "choices"),
-  layersCmd = c("question", "(choice|CorrectChoice)"), outputBaseName,
-  outputDirectory, cmdReorder = rep_len(TRUE, length(layersNames)),
-  sectionReorder = FALSE, infoTable = NULL, colNames = NULL,
-  cmdNames = NULL, nOutputVersions = nrow(infoTable),
-  nOutputQuestions = "max", answerSheetCorrectTag = NULL,
-  answerSheetWrongTag = NULL, optionList = NULL)
+CreateRandomExams(
+  x,
+  layersNames = c("questions", "choices"),
+  layersCmd = c("question", "(choice|CorrectChoice)"),
+  outputBaseName,
+  outputDirectory,
+  cmdReorder = rep_len(TRUE, length(layersNames)),
+  sectionReorder = FALSE,
+  infoTable = NULL,
+  colNames = NULL,
+  cmdNames = NULL,
+  nOutputVersions = nrow(infoTable),
+  nOutputQuestions = "max",
+  answerSheetCorrectTag = NULL,
+  answerSheetWrongTag = NULL,
+  optionList = NULL
+)
 }
 \arguments{
 \item{x}{A character vector, each element represents one line of the latex document}

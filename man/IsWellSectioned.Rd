@@ -21,9 +21,11 @@ Function to assure a set of sections is well sectioned.
 Basically it makes sure that, \eqn{u[1]<v[1]<u[2]<v[2]}, etc
 }
 \seealso{
-Other Structuring Document: \code{\link{CompileDocument}},
-  \code{\link{DivideFile}}, \code{\link{FindStructure}},
-  \code{\link{StructureDocument}}
+Other Structuring Document: 
+\code{\link{CompileDocument}()},
+\code{\link{DivideFile}()},
+\code{\link{FindStructure}},
+\code{\link{StructureDocument}()}
 }
 \author{
 Alejandro Recuenco \email{alejandrogonzalezrecuenco@gmail.com}

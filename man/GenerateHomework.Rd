@@ -4,8 +4,14 @@
 \alias{GenerateHomework}
 \title{Generate Homework}
 \usage{
-GenerateHomework(x, Table, CommandNames, ColumnNames, outputDirectory,
-  outputBaseName)
+GenerateHomework(
+  x,
+  Table,
+  CommandNames,
+  ColumnNames,
+  outputDirectory,
+  outputBaseName
+)
 }
 \arguments{
 \item{x}{A character vector, each element represents one line of the latex document}

@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2020
 #### Randomizing layers
 ####
 ### NOTE: Right now the naming convention is hardcoded into the regex's, Is there any reason to change that?

@@ -32,9 +32,10 @@ x <- readLines(file)
 DivideFile(x)
 }
 \seealso{
-Other Structuring Document: \code{\link{CompileDocument}},
-  \code{\link{FindStructure}},
-  \code{\link{IsWellSectioned}},
-  \code{\link{StructureDocument}}
+Other Structuring Document: 
+\code{\link{CompileDocument}()},
+\code{\link{FindStructure}},
+\code{\link{IsWellSectioned}()},
+\code{\link{StructureDocument}()}
 }
 \concept{Structuring Document}

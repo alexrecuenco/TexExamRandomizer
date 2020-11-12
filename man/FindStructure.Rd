@@ -42,9 +42,11 @@ All functions don't search for commands if the commands have been commented with
 TODO: Implement options for regular expressions
 }
 \seealso{
-Other Structuring Document: \code{\link{CompileDocument}},
-  \code{\link{DivideFile}}, \code{\link{IsWellSectioned}},
-  \code{\link{StructureDocument}}
+Other Structuring Document: 
+\code{\link{CompileDocument}()},
+\code{\link{DivideFile}()},
+\code{\link{IsWellSectioned}()},
+\code{\link{StructureDocument}()}
 }
 \concept{Structuring Document}
 \keyword{internal}

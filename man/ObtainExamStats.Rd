@@ -4,8 +4,11 @@
 \alias{ObtainExamStats}
 \title{Obtaining exam statistics}
 \usage{
-ObtainExamStats(OriginalExamAnswerSheet, ExamAnswerParsedList,
-  names.FullExamOriginalCols)
+ObtainExamStats(
+  OriginalExamAnswerSheet,
+  ExamAnswerParsedList,
+  names.FullExamOriginalCols
+)
 }
 \arguments{
 \item{OriginalExamAnswerSheet}{The answer sheet of the original exam. (In this package the convention is the exam version "0")}
@@ -81,6 +84,7 @@ ExamStats <-
     )
 }
 \seealso{
-Other Grading Exams: \code{\link{GradeExams}}
+Other Grading Exams: 
+\code{\link{GradeExams}()}
 }
 \concept{Grading Exams}

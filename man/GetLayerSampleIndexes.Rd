@@ -4,8 +4,12 @@
 \alias{GetLayerSampleIndexes}
 \title{GetLayerSampleIndexes}
 \usage{
-GetLayerSampleIndexes(section_vector, command_vector,
-  sampleSectionOrder = FALSE, randomizeSection = TRUE)
+GetLayerSampleIndexes(
+  section_vector,
+  command_vector,
+  sampleSectionOrder = FALSE,
+  randomizeSection = TRUE
+)
 }
 \arguments{
 \item{sampleSectionOrder}{Should it also move around the sections or not? Look at the details for a more detailed explanation}

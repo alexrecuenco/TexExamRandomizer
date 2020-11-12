@@ -4,7 +4,9 @@
 \name{testclass}
 \alias{testclass}
 \title{Sample class table}
-\format{A dataframe with 5 rows and 4 columns}
+\format{
+A dataframe with 5 rows and 4 columns
+}
 \source{
 self
 }

@@ -4,7 +4,9 @@
 \name{testdoc}
 \alias{testdoc}
 \title{Test document}
-\format{A list with the format described in \code{\link{StructureDocument}}}
+\format{
+A list with the format described in \code{\link{StructureDocument}}
+}
 \source{
 Created between me and my students in Suankularbwittayalai Rangsit School
 }

@@ -46,9 +46,9 @@ addons:
 #env
 env:
   - COMPILER=gcc-4.9
-  global:
+  # global:
   - _R_CHECK_FORCE_SUGGESTS_=false
   - MAKEFLAGS="-j 2"
 
-#services
-services:
+# #services
+# services:

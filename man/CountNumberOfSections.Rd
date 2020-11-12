@@ -27,9 +27,10 @@ The replacement is simply \code{"\\1"}.
 It tries to first find whether there exist attributes command and section that explain the command and section, before starting to use regexs on the names.
 }
 \seealso{
-Other Extracting information: \code{\link{ConstructAnswerSheet}},
-  \code{\link{FindExamAnswers}},
-  \code{\link{GenerateShortAnswerSheet}}
+Other Extracting information: 
+\code{\link{ConstructAnswerSheet}()},
+\code{\link{FindExamAnswers}()},
+\code{\link{GenerateShortAnswerSheet}()}
 }
 \concept{Extracting information}
 \keyword{internal}

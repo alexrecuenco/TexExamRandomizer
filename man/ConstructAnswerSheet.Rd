@@ -71,8 +71,9 @@ ConstructAnswerSheet(
 \seealso{
 \code{\link{FindExamAnswers}} for the exact underlying messy algorithm that controls how the table is created.
 
-Other Extracting information: \code{\link{CountNumberOfSections}},
-  \code{\link{FindExamAnswers}},
-  \code{\link{GenerateShortAnswerSheet}}
+Other Extracting information: 
+\code{\link{CountNumberOfSections}()},
+\code{\link{FindExamAnswers}()},
+\code{\link{GenerateShortAnswerSheet}()}
 }
 \concept{Extracting information}
