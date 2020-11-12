@@ -1,10 +1,10 @@
-#!/usr/local/bin/Rscript
+#!/usr/bin/env Rscript
 #### TexExamRandomizer SCRIPT WITH JSONPARSER ####
 # For use with exams
 #### Generating Exams
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2020
 #
 #
 #
