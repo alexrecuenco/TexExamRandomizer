@@ -4,8 +4,14 @@
 \alias{GradeExams}
 \title{GradeExams}
 \usage{
-GradeExams(ExamAnswerParsedList, name.ColCorrect, name.ColIncorrect,
-  MaxOutputGrade = 100, ExtraPoints = 0, ExtraPointsForAll = 0)
+GradeExams(
+  ExamAnswerParsedList,
+  name.ColCorrect,
+  name.ColIncorrect,
+  MaxOutputGrade = 100,
+  ExtraPoints = 0,
+  ExtraPointsForAll = 0
+)
 }
 \arguments{
 \item{ExamAnswerParsedList}{List parsed by \code{\link{WhichAnswerOriginal}}}
@@ -139,6 +145,7 @@ GradedStudentTable <-
 
 }
 \seealso{
-Other Grading Exams: \code{\link{ObtainExamStats}}
+Other Grading Exams: 
+\code{\link{ObtainExamStats}()}
 }
 \concept{Grading Exams}

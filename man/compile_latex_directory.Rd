@@ -4,8 +4,12 @@
 \alias{compile_latex_directory}
 \title{Compile LatexDirectory}
 \usage{
-compile_latex_directory(options = list(), input_directory,
-  output_directory = input_directory, main_directory)
+compile_latex_directory(
+  options = list(),
+  input_directory,
+  output_directory = input_directory,
+  main_directory
+)
 }
 \arguments{
 \item{options}{See details}

@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2020
 #' Generating Random Exams from 'LaTeX' documents
 #'
 #' This package is designed with exams and homework created in 'LaTeX' in mind. It allows to randomize and personalize exams and homework and it aids the user with grading them.

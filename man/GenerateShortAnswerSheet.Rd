@@ -4,8 +4,11 @@
 \alias{GenerateShortAnswerSheet}
 \title{Generating a short answer sheet}
 \usage{
-GenerateShortAnswerSheet(ExamSheet, versionColName = "Version",
-  correctColName = "CorrectChoice")
+GenerateShortAnswerSheet(
+  ExamSheet,
+  versionColName = "Version",
+  correctColName = "CorrectChoice"
+)
 }
 \arguments{
 \item{ExamSheet}{a exam sheet that contains all versions, similar to \code{\link{CreateRandomExams}}}
@@ -52,8 +55,9 @@ testASheet <- read.csv(
 GenerateShortAnswerSheet(testASheet)
 }
 \seealso{
-Other Extracting information: \code{\link{ConstructAnswerSheet}},
-  \code{\link{CountNumberOfSections}},
-  \code{\link{FindExamAnswers}}
+Other Extracting information: 
+\code{\link{ConstructAnswerSheet}()},
+\code{\link{CountNumberOfSections}()},
+\code{\link{FindExamAnswers}()}
 }
 \concept{Extracting information}

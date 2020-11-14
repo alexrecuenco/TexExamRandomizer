@@ -4,10 +4,16 @@
 \alias{WhichAnswerOriginal}
 \title{WhichAnswerOriginal}
 \usage{
-WhichAnswerOriginal(StudentAnswers, FullExamAnswerSheet,
-  OriginalExamVersion = 0, names.FullExamVersion = "Version",
-  names.FullExamOriginalCols, names.CorrectAndIncorrectCols,
-  names.StudentAnswerQCols, names.StudentAnswerExamVersion)
+WhichAnswerOriginal(
+  StudentAnswers,
+  FullExamAnswerSheet,
+  OriginalExamVersion = 0,
+  names.FullExamVersion = "Version",
+  names.FullExamOriginalCols,
+  names.CorrectAndIncorrectCols,
+  names.StudentAnswerQCols,
+  names.StudentAnswerExamVersion
+)
 }
 \arguments{
 \item{StudentAnswers}{DataFrame, each row is a student, each column is some information about said student. Any column not included in \code{names.StudentAnswerQCols} will be understood as information of the student and will be saved as part of the information table when we output the result.}
@@ -145,9 +151,9 @@ compiledanswers <-
 nicknames <- attr(compiledanswers, "StudentInfo")$Nickname
 
 for (i in 1:length(compiledanswers)) {
-    cat("Student\\t", nicknames[i], " got\\t",
+    cat("Student\t", nicknames[i], " got\t",
         sum(!is.na(compiledanswers[[i]]$CorrectChoice)),
-        " questions correctly\\n", sep = "")
+        " questions correctly\n", sep = "")
 }
 }
 \seealso{

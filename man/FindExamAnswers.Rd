@@ -4,8 +4,7 @@
 \alias{FindExamAnswers}
 \title{FindExamAnswers}
 \usage{
-FindExamAnswers(Document, correctTag, wrongTag = NULL,
-  OutputStartingName = "")
+FindExamAnswers(Document, correctTag, wrongTag = NULL, OutputStartingName = "")
 }
 \arguments{
 \item{Document}{Document, as defined in \code{\link{StructureDocument}}. Remember however that the function \code{\link{StructureDocument}} returns the document and the preamble together in a list.}
@@ -48,9 +47,10 @@ In the last layer, when it finally find the correct or wrong tag. It modifies th
 Therefore, each element is a pretty long string identifying all the layers that it took to traverse to get down to the answer. This function was basically used to prevent the use of attributes that bug out unexpectedly, since when passing functions and parsing things looses the attributes.
 }
 \seealso{
-Other Extracting information: \code{\link{ConstructAnswerSheet}},
-  \code{\link{CountNumberOfSections}},
-  \code{\link{GenerateShortAnswerSheet}}
+Other Extracting information: 
+\code{\link{ConstructAnswerSheet}()},
+\code{\link{CountNumberOfSections}()},
+\code{\link{GenerateShortAnswerSheet}()}
 }
 \concept{Extracting information}
 \keyword{internal}

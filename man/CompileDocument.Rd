@@ -101,10 +101,11 @@ If it finds the structure of the document to not be completed, it will throw an 
 \seealso{
 \link{FindStructure} for more information on the details of how the layers are found.
 
-Other Structuring Document: \code{\link{DivideFile}},
-  \code{\link{FindStructure}},
-  \code{\link{IsWellSectioned}},
-  \code{\link{StructureDocument}}
+Other Structuring Document: 
+\code{\link{DivideFile}()},
+\code{\link{FindStructure}},
+\code{\link{IsWellSectioned}()},
+\code{\link{StructureDocument}()}
 }
 \concept{Structuring Document}
 \keyword{internal}

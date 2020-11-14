@@ -12,3 +12,5 @@
 ^.*ExampleTexDocuments(/.*){2,}$
 ^docs/.*
 ^TODO.md$
+^\.ccache$
+^\.github$

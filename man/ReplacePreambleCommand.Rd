@@ -45,6 +45,7 @@ Lastly, if it doesn't find a command on the document, it silently ignores it.
 new_preamble <- ReplacePreambleCommand( TexExamRandomizer::testdoc$preamble, "nickname", "Alex")
 }
 \seealso{
-Other Preamble adjustment: \code{\link{ReplaceFromTable}}
+Other Preamble adjustment: 
+\code{\link{ReplaceFromTable}()}
 }
 \concept{Preamble adjustment}

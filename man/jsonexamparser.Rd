@@ -124,8 +124,9 @@ jsonexamparser(opt)
 
 }
 \seealso{
-Other jsoncompiler: \code{\link{ParsePreambleForOptions}},
-  \code{\link{compilation_options}},
-  \code{\link{jsonhwparser}}
+Other jsoncompiler: 
+\code{\link{ParsePreambleForOptions}()},
+\code{\link{compilation_options}()},
+\code{\link{jsonhwparser}()}
 }
 \concept{jsoncompiler}

@@ -115,8 +115,10 @@ doc <- StructureDocument(x, layersNames, layersCmd)
 \seealso{
 \link{FindStructure} for more information on the details of how the layers are found.
 
-Other Structuring Document: \code{\link{CompileDocument}},
-  \code{\link{DivideFile}}, \code{\link{FindStructure}},
-  \code{\link{IsWellSectioned}}
+Other Structuring Document: 
+\code{\link{CompileDocument}()},
+\code{\link{DivideFile}()},
+\code{\link{FindStructure}},
+\code{\link{IsWellSectioned}()}
 }
 \concept{Structuring Document}

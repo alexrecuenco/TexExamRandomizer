@@ -4,9 +4,16 @@
 \alias{compilation_options}
 \title{Define compilations options}
 \usage{
-compilation_options(file = NULL, table = NULL, noutput = NULL,
-  nquestions = NULL, seed = NULL, compile = NULL, xelatex = NULL,
-  debug = NULL)
+compilation_options(
+  file = NULL,
+  table = NULL,
+  noutput = NULL,
+  nquestions = NULL,
+  seed = NULL,
+  compile = NULL,
+  xelatex = NULL,
+  debug = NULL
+)
 }
 \arguments{
 \item{file}{Input file name}
@@ -50,7 +57,9 @@ jsonhwparser(opt)
 }
 }
 \seealso{
-Other jsoncompiler: \code{\link{ParsePreambleForOptions}},
-  \code{\link{jsonexamparser}}, \code{\link{jsonhwparser}}
+Other jsoncompiler: 
+\code{\link{ParsePreambleForOptions}()},
+\code{\link{jsonexamparser}()},
+\code{\link{jsonhwparser}()}
 }
 \concept{jsoncompiler}

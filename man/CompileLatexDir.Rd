@@ -6,14 +6,29 @@
 \alias{CompileLatexDirHW}
 \title{Compiling function}
 \usage{
-CompileLatexDir(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDir(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 
-CompileLatexDirEXAM(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDirEXAM(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 
-CompileLatexDirHW(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDirHW(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 }
 \arguments{
 \item{pdf.dir.out}{Directory where the pdf output will be sent to}
