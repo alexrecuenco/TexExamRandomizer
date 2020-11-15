@@ -1,9 +1,9 @@
-#!/usr/local/bin/Rscript
+#!/usr/bin/env Rscript
 #### SCRIPT ####
 #### Grading exams,
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2020
 #### Functions ####
 
 
