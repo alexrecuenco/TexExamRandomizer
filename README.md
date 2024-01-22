@@ -1,7 +1,6 @@
 # TexExamRandomizer
 [![CRAN](https://www.r-pkg.org/badges/version/TexExamRandomizer)](https://cran.r-project.org/package=TexExamRandomizer)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/b022205jic1xg8r3?svg=true)](https://ci.appveyor.com/project/alexrecuenco/texexamrandomizer)
-[![Travis build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=main)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
+[![R-CMD-check](https://github.com/alexrecuenco/TexExamRandomizer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/alexrecuenco/TexExamRandomizer/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/alexrecuenco/TexExamRandomizer/branch/main/graph/badge.svg)](https://codecov.io/gh/alexrecuenco/TexExamRandomizer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](http://cranlogs.r-pkg.org/badges/TexExamRandomizer)](http://www.r-pkg.org/pkg/TexExamRandomizer)
@@ -91,3 +90,28 @@ I managed to make it work with TexMaker once, although it wasn't pretty.
     ```
 
 3. You could then use that script to call the engine directly from the TexMaker menu, wihtout having to open R at any moment.
+
+## Maintainance
+
+Hi, if someone is reading this. I haven't had time in a while to maintain this package.
+
+I really like the goals of it, and I personally would write the code very differently nowadays as you can imagine, I wrote this when I was a teacher... It's been a while!
+
+I do have some goals with it, especially with using the Rmd format to generate exams... but I struggle to find time to do it. It will get done at some point I am sure!
+
+
+## Upload process
+
+Currently upload is manual, I tried to use tic for deployment, but it is complex to figure out on a tight schedule.
+
+
+```bash
+# Install dependencies (install devtools and then run devtools::install_deps()l devtools::install_dev_deps())
+# Then verify you can build documents devtools::document()
+# THEN build and check
+R CMD BUILD .
+R CMD CHECK --as-cran "<version.tar.gz>"
+
+```
+
+Then [submit it](https://cran.r-project.org/submit.html)
