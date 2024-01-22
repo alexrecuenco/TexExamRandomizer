@@ -14,3 +14,7 @@
 ^TODO.md$
 ^\.ccache$
 ^\.github$
+^.*\.Rcheck$
+^\.DS_Store$
+^\.RData$
+^\.Rhistory$
