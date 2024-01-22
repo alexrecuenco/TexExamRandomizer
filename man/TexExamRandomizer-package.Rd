@@ -24,6 +24,7 @@ If instead you are trying to use the library to create your own randomizer for a
 Useful links:
 \itemize{
   \item \url{https://github.com/alexrecuenco/TexExamRandomizer}
+  \item \url{https://alexrecuenco.github.io/TexExamRandomizer/}
   \item Report bugs at \url{https://github.com/alexrecuenco/TexExamRandomizer/issues}
 }
 
