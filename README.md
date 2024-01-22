@@ -1,12 +1,12 @@
-# TexExamRandomizer 
+# TexExamRandomizer
 [![CRAN](https://www.r-pkg.org/badges/version/TexExamRandomizer)](https://cran.r-project.org/package=TexExamRandomizer)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/b022205jic1xg8r3?svg=true)](https://ci.appveyor.com/project/alexrecuenco/texexamrandomizer)
-[![Travis build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=master)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
-[![codecov](https://codecov.io/gh/alexrecuenco/TexExamRandomizer/branch/master/graph/badge.svg)](https://codecov.io/gh/alexrecuenco/TexExamRandomizer)
+[![Travis build Status](https://travis-ci.org/alexrecuenco/TexExamRandomizer.svg?branch=main)](https://travis-ci.org/alexrecuenco/TexExamRandomizer)
+[![codecov](https://codecov.io/gh/alexrecuenco/TexExamRandomizer/branch/main/graph/badge.svg)](https://codecov.io/gh/alexrecuenco/TexExamRandomizer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](http://cranlogs.r-pkg.org/badges/TexExamRandomizer)](http://www.r-pkg.org/pkg/TexExamRandomizer)
 
-[comment]:?color=brightgreen 
+[comment]:?color=brightgreen
 
 _R package used to randomize and grade `LaTeX` exams and homework automatically._
 
@@ -26,7 +26,7 @@ There are also examples of different exam formats inside `inst/extdata`, that mi
 
 ### From github
 
-To install the latest development version from github, 
+To install the latest development version from github,
 
 ```r
 devtools::install_github("alexrecuenco/TexExamRandomizer")
@@ -49,30 +49,30 @@ vignette(package = "TexExamRandomizer")
 ```
 to see all the documentation available.
 
-  
+
 ## Using the package with TexShop (In MAC OS)
 
 
-This package includes in the `exec/` folder a couple of `.engine` files that are intended to be used with TexShop. 
+This package includes in the `exec/` folder a couple of `.engine` files that are intended to be used with TexShop.
 Once installed, you won't need to move outside of your TexShop environment
 
 To install it:
 
-1. You first have to copy the files `exec/examrandomizer` and `exec/gradeexamrandomizer` in some folder that can be found by your `$PATH` variable. 
+1. You first have to copy the files `exec/examrandomizer` and `exec/gradeexamrandomizer` in some folder that can be found by your `$PATH` variable.
 
     I don't recommend adding the `exec/` folder to the `$PATH` variable, because when you update your R distribution, you would need to update again everything. On the other hand, when this software is updated, those files can stay where they are. You won't need to replace those files again.
-    
+
 2. After you have done that, you need to add both `.engines` files in your Engines folder from your TexShop distribution.
 
     In my case, that folder is `~/Library/TexShop/Engines`. (You will see a bunch of the other `.engines` files already in there)
-    
-3. To use the software, now that it is installed, you simply write your exams in `LaTeX`. 
+
+3. To use the software, now that it is installed, you simply write your exams in `LaTeX`.
 
    You will have to specify in JSON format at the start of your exam what is your exam format (unless you are using the default exam class format). The possible options are described in
-   
+
    ```r
    vignette("ExamOptions", package = "TexExamRandomizer")
-   ``` 
+   ```
 
 4. When your exam is ready for compilation, and you have tested it compiles with your `LaTeX` engine. Switch the engine in the engine window in TexShop to `examrandomizer` and compile using that engine. It will automatically generate a folder with all the exam versions, as well as an answer sheet and a file with the options that it used.
 
@@ -85,7 +85,7 @@ I managed to make it work with TexMaker once, although it wasn't pretty.
 2. Then, I added a script in TexMaker that calls those scripts directly. You first need to find where Rscript is located on your installation path.
 
    Then, the script will look something similar to
-    
+
     ```bash
     C:\\<Rscript location> C:\\TexRandomizer\examrandomizer --file "$1" --compile
     ```
