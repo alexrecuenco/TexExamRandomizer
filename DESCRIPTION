@@ -7,7 +7,7 @@ Maintainer: Alejandro Gonzalez Recuenco <alejandrogonzalezrecuenco@gmail.com>
 Description: Randomizing exams with 'LaTeX'.
     If you can compile your main document with 'LaTeX', the program should be able to compile the randomized
     versions without much extra effort when creating the document.
-URL: https://github.com/alexrecuenco/TexExamRandomizer
+URL: https://github.com/alexrecuenco/TexExamRandomizer, https://alexrecuenco.github.io/TexExamRandomizer/
 BugReports: https://github.com/alexrecuenco/TexExamRandomizer/issues
 Encoding: UTF-8
 LazyData: true

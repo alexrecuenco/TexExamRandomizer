@@ -18,3 +18,6 @@
 ^\.DS_Store$
 ^\.RData$
 ^\.Rhistory$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
