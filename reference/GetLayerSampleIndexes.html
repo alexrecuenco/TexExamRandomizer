@@ -66,17 +66,17 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>sampleSectionOrder</dt>
-<dd><p>Should it also move around the sections or not? Look at the details for a more detailed explanation</p></dd>
-
-
-<dt>NamesOfListToSample</dt>
+    <dl><dt>command_vector</dt>
 <dd><p>The names of each element on the list we want to sample, with the original order. The usual use would be <code>NamesOfListToSample = names(list)</code>.</p>
 <p>Being specific, the names that are provided will be matched with the regular expression <code>"^[[:digit:]]+_.+[[:digit:]]+_"</code>.</p></dd>
 
 
-<dt>isRandomized</dt>
-<dd><p>If this is set to false, it will not randomize the list, it will just output <code>1:length(OfNamesOfListToSample)</code>. It handles properly when the list is of length 0, by outputting <code>integer(0)</code></p></dd>
+<dt>sampleSectionOrder</dt>
+<dd><p>Should it also move around the sections or not? Look at the details for a more detailed explanation</p></dd>
+
+
+<dt>randomizeSection</dt>
+<dd><p>If this is set to false, it will not randomize the list, it will just output <code>1:length(command_vector)</code>. It handles properly when the list is of length 0, by outputting <code>integer(0)</code></p></dd>
 
 </dl></div>
     <div class="section level2">
