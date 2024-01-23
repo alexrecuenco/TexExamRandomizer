@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2020
+# (C) 2023
 #
 # Place this file on ~/Library/TeXShop/Engines
 export PATH=/Library/TeX/texbin:/usr/texbin:/usr/local/bin:${PATH}
