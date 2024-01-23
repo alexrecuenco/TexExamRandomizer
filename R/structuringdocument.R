@@ -153,8 +153,8 @@ FindCommand <- function(x, cmdName) {
 #' @param x A character vector, each element represents one line of the latex document
 #' @return  Returns a list with two character vectors:
 #' \describe{
-#' \item{preamble}{A character vector that includes \\emph{every line} of \code{x} up to \\begin{document}}
-#' \item{document}{A character vector that includes \\emph{every line} from \\begin{document} to the first \\end{document}} }
+#' \item{preamble}{A character vector that includes \emph{every line} of \code{x} up the begin document command}
+#' \item{document}{A character vector that includes \emph{every line} from the begin document command to the first end document command} }
 #' @export
 #' @family Structuring Document
 #' @examples

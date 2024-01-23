@@ -12,8 +12,8 @@ DivideFile(x)
 \value{
 Returns a list with two character vectors:
 \describe{
-\item{preamble}{A character vector that includes \\emph{every line} of \code{x} up to \\begin{document}}
-\item{document}{A character vector that includes \\emph{every line} from \\begin{document} to the first \\end{document}} }
+\item{preamble}{A character vector that includes \emph{every line} of \code{x} up the begin document command}
+\item{document}{A character vector that includes \emph{every line} from the begin document command to the first end document command} }
 }
 \description{
 Function that takes a vector of text lines, \code{x}, and divides it in preamble and document.
