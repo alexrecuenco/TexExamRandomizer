@@ -19,7 +19,7 @@ The examrandomizer engine, `examrandomizer.engine`, and the `examrandomizer` scr
 system.file("exec", package = "TexExamRandomizer")
 ```
 
-As described on [Basic use](Basic use), the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to also write options directly in the document for those functions directly on the 'LaTeX' document by invoquing json-like options. 
+As described on the `Basic use` vignette, the engine is a wrapper of the functions `CreateRandomExams` and `GenerateHomework`. It simply allow you to also write options directly in the document for those functions directly on the 'LaTeX' document by invoquing json-like options.
 
 In essence, within the first two hundred lines it searches for tags `TexExamRandomizer`:
 
@@ -53,12 +53,12 @@ In the preamble it requires the following `\newcommand` definitions. In each exa
     \newcommand{\myversion}{0} % This will be replaced by the version number
     \newcommand\rseed{seed} % This will be replaced by the seed used in R to seed the randomization process
 ```
-    
+
 Don't worry if you don't understand yet how you specify these options yet, that is going to be explained below.
-    
+
 # Specifying options
 
-These options relate to the executables that are provided in the `exec\` folder. 
+These options relate to the executables that are provided in the `exec\` folder.
 
 To describe the options, I will distinguish between options that can also be altered through the command line and those that can't.
 I will write the name of the option preceded by "`-`" or "`--`" if they are command line options, while they will be in double quotes if the option can be written with a `TexExamRandomizer` tag within the document.
@@ -82,15 +82,15 @@ All these options are defaulted to false unless they are given.
 
 ## General options
 
-* `"layernames"`/`"layercmd"` : 
+* `"layernames"`/`"layercmd"` :
 
-    Default -> 
-    
+    Default ->
+
     `{"layernames":["questions", "choices"], "layercmd": ["question", "(choice|CorrectChoice)"]}`
 
     A character vector with the names of the nested layer environments. It recognizes simple regular expressions.
     For example, the default value of `layercmd`, `(choice|CorrectChoice)`, can be read as the command being either `\choice` or `\CorrectChoice`.
-    
+
     The default values follows the standard exam class defaults. Therefore, it would detect appropriately the following structure.
 
         \begin{questions}
@@ -107,41 +107,41 @@ All these options are defaulted to false unless they are given.
             ...
         \end{questions}
         ...
-        
+
 * `"reordersections"`, `"reorderitems"`: Default value ->
 
     `{"reordersections": [true, ..., true], "reorderitems": [true, ..., true]}`
-     
+
     Given the `layernames` and `layercmd`, the values of `reordersections` and `reorderitems` should be the same length.
-    
+
     + Every entry refers to a layer, from outer-most layer to inner-most layer
     + Notice that the values on the arrays must be "true" or "false".
     + By reordering "items", it means reordering each item within one environment and reordering them.
     + By reordering "sections", it means to reorder the order of the environments, from `\begin{}` to `\end{}`.
         - It should be clear that everything **before the first section** will be kept fixed.
-          
+
             This is done to prevent the main explanation from getting dragged with the first section. If you *really* want to avoid some text from getting left behind, for some specific use you might have just place it on the same line as the `\begin{}` environment is on.
-    
+
 * `"correcttag"`: Default -> `["CorrectChoice"]`
-    
-    The 'LaTeX' command name (`\correcttag`) that will mark a choice as being correct if it is found somewhere within the text of that choice. 
+
+    The 'LaTeX' command name (`\correcttag`) that will mark a choice as being correct if it is found somewhere within the text of that choice.
 
 * `"wrongtag"`:  Default -> `["choice"]`
 
-    The 'LaTeX' command name (`\wrongtag`) that will mark a choice as being incorrect if found somewhere within the text of that choice. 
-    
+    The 'LaTeX' command name (`\wrongtag`) that will mark a choice as being incorrect if found somewhere within the text of that choice.
+
     If `\wrongtag` can't be found on a question, that question will be ignored when generating the answer sheet. Only the correct ones will be found on the answer sheet.
-    
+
 * `--table`/`"table"` : Default -> `NULL`
 
-    Table file from which to extract info to personalize the document. If this parameter is not given it requires to give the "noutput". 
-    
+    Table file from which to extract info to personalize the document. If this parameter is not given it requires to give the "noutput".
+
     Look at [Options to personalize documents](#table) for more information in how documents can be personalized with a table.
 
     **IMPORTANT: The table file must be specified relative to the location of the tex document being compiled, not relative to the executable location**
-    
-    
-* `-n`/`--noutput`/`"noutput"`: 
+
+
+* `-n`/`--noutput`/`"noutput"`:
 
     Number of output versions. If this paramenter is not given, it requires the "table" parameter to be given. In that case, it will understand the number of output versions to be the same as the number of rows in the table.
 
@@ -153,21 +153,21 @@ All these options are defaulted to false unless they are given.
     (@) If the value is a vector, for example `"nquestions":[3, 4, 5, 6]`, the vector must then:
         + Have the same length as the number of sections
         + Have all values be non-zero values
-    
+
     (@) If the value can't be coherced to numeric (For example, "max"), it keeps all the questions form the exam.
-    
+
 
 * `-s`/`--seed`/`"seed"` : Default -> `NULL`
 
-    Seed to intialize the randomization. 
+    Seed to intialize the randomization.
         - If no value of seed is found it looks for `compileInfo.txt` in the output folder where it is going to dump the tex files. If it doesn't find that file, it uses `Sys.time()` to create a seed.
             This prevents changing the seed between runs of the same file.
 
- 
-    
+
+
 # Personalizing a document {#table}
 
-If a table is specified, either through the command line with `--table` or through the document with a "table" option, note that each row on the table will represent a student. 
+If a table is specified, either through the command line with `--table` or through the document with a "table" option, note that each row on the table will represent a student.
 
 With that, I mean that the personalization will occur for every row on the table. Therefore, if the number of versions  that you specified is 3, and there are 20 rows, the program will try to distribute the rows more or less evenly between the number of versions that were specified. But it will still customize each and every one of the version according to the settings given here.
 
@@ -181,7 +181,7 @@ We rely in using 'LaTeX' macros to personalize documents. We search within the p
 And once found, we change the command value to the new personalized value. A common use would be, for example, personalizing the document with a name by writing the following macro
 
     \newcommand\Name{TestName}
-    
+
 An once personalization occurs, each version will replace the `\Name` command value for the value required for each version.
 
 *Note that if you don't want the engine to modify the macro you are using, you can instead of using `\newcommand`, you could use `\newcommand*` or `\def` . The asterisk `*` has a special meaning in 'LaTeX', but with the simple use that we are giving this commands, that can't have options, that is irrelevant..*
@@ -207,7 +207,7 @@ So, how do you add your own commands to be personalized you might ask?
 
 There are two types of information that you might want to add to personalize each individual document.
 
-+ Random information, that would be assigned individually at randomly. 
++ Random information, that would be assigned individually at randomly.
 + Or extra information, that would be taken from the table itself and  incorporated into the document.
 
 
@@ -216,13 +216,13 @@ There are two types of information that you might want to add to personalize eac
 Random information will be added in the document by adding the option `"randominfo"`. The format in the document will be as follows
 
     !% TexExamRandomizer = {"randominfo": {"<commandname>": <integer>, "<commandname2>" : <integer> ...}}
-    
+
 It will try to find commands of the type `\newcommand{\commandname}{??}` and replace them with `\newcommand{\commandname}{randint}`. Where the random integer that will be chosen will be a number between 1 and the `<integer>`.
 
-If on the other hand, you want the value of the command to be chosen between a list of values, you can instead write 
+If on the other hand, you want the value of the command to be chosen between a list of values, you can instead write
 
     "<commandname>" : ["value1", "value2", "value3"]
-    
+
 And the program will choose randomly between one of those values.
 
 The most useful way to use this option, in my opinion, is just to generate one numbe from which to seed the pgf/TikZ random seed, and then use native tools in 'LaTeX' to randomize anything you want. In that way you have much more control, however, for some people it might be more comfortable and more clear to specify it directly in the tags.
@@ -236,15 +236,15 @@ Extra information can be added in the document with the option `"extrainfo"` as 
 It works similarly to how adding random information works. However, instead of specifying the values from which to choose, we are instead specifying a **column name** in the table from which to gather the information. (Look at the "table" option to see how you can suggest a table to the program). For each row, it will choose the corresponding value and replace in the tex document the values of
 
     \newcommand\cmdName{Testname}
-    
+
 to instead use
-    
+
     \newcommand\cmdName{<vale row i of column columnName>}
-    
+
 #### Naming columns with spaces and punctuation marks.
 
 Keep in mind that we are still using R, which modifies the name of the column (It really dislike spaces and certain symbols). Therefore, to prevent having confusing behaviour, I decided to simply remove all punctuation marks and spaces. Therefore, punctuation marks and spaces will be ignored both on tags "extrainfo" and on the column names on the "table" provided.
-    
+
 # Examples.
 
 The following examples show some sets of options for different characteristics.
@@ -259,7 +259,7 @@ The following examples show some sets of options for different characteristics.
     %! TexExamRandomizer = {"layernames":["document", "questions", "choices"]}
     %! TexExamRandomizer = {"reordersections":[true, true, false]}
     %! TexExamRandomizer = {"reorderitems":[false, true, true]}
-    
+
 ## Exam class with 6 sections, choosing a few questions for each section.
 
     %! TexExamRandomizer = {"noutput":2, "nquestions": [2,3,3,3,1,1]}
@@ -271,7 +271,3 @@ The following examples show some sets of options for different characteristics.
     %! TexExamRandomizer = {"reordersections":[false, false], "reorderitems":[false, true]}
     %! TexExamRandomizer = {"table":"TestClass.csv"}
     %! TexExamRandomizer = {"extrainfo":{"Class":"class", "Roll Number":"rollnumber","Nickname":"nickname"}}
-
-
-
-
