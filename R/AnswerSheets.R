@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2020
+# (C) 2023
 
 #' @title CountNumberOfSections
 #' @description It counts the number of subparts in each section and outputs the result as a table. It doesn't act recursively, it only does the outermost layer.
@@ -487,4 +487,3 @@ GenerateShortAnswerSheet <- function(ExamSheet, versionColName = "Version", corr
         )
     );
 }
-

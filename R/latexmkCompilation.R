@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2020
+# (C) 2023
 #### LateX Folder Compilation Codes ####
 ####
 ####

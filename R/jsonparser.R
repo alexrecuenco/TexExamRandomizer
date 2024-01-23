@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2020
+# (C) 2023
 #### Parsing document for JSON TexExamRandomizer directions
 ####
 ####
@@ -1083,5 +1083,3 @@ compilation_options <- function(file=NULL, table=NULL, noutput=NULL, nquestions=
     )
 
 }
-
-

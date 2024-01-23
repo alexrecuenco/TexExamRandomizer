@@ -1,16 +1,15 @@
-# include <Rcpp.h>
-# include <iostream>
-# include <string>
-# include <regex>
+#include <Rcpp.h>
+#include <iostream>
+#include <regex>
+#include <string>
 using namespace Rcpp;
 /*
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2020
+# (C) 2023
 */
 
-
-class LayerCompiler{
+class LayerCompiler {
 public:
     // const StringVector& x;
     std::vector<std::string> sectionName, commandName;
@@ -21,39 +20,35 @@ public:
         // const StringVector& _x,
         const StringVector& _sectionName,
         const StringVector& _commandName)
-        //: x(_x)
-        {
+    //: x(_x)
+    {
 
         last_layer = _sectionName.size() - 1;
-        for(int i = 0; i< _sectionName.size(); i++){
+        for (int i = 0; i < _sectionName.size(); i++) {
             sectionName.push_back(std::string(_sectionName[i]));
             commandName.push_back(std::string(_commandName[i]));
-            start_regex.push_back(std::regex("^[^%]*\\\\begin\\{"   + sectionName[i] + "\\}"));
-            end_regex.push_back  (std::regex("^[^%]*\\\\end\\{"     + sectionName[i] + "\\}"));
-            cmd_regex.push_back  (std::regex("^[^%]*\\\\"           + commandName[i] + "([^a-zA-Z]|$)"));
-
+            start_regex.push_back(std::regex("^[^%]*\\\\begin\\{" + sectionName[i] + "\\}"));
+            end_regex.push_back(std::regex("^[^%]*\\\\end\\{" + sectionName[i] + "\\}"));
+            cmd_regex.push_back(std::regex("^[^%]*\\\\" + commandName[i] + "([^a-zA-Z]|$)"));
         }
-
     }
 
-    List compile(const StringVector::const_iterator it_beg, const StringVector::const_iterator it_end, int layer){
+    List compile(const StringVector::const_iterator it_beg, const StringVector::const_iterator it_end, int layer)
+    {
         IntegerVector attr_section, attr_command;
         List list;
-        int section (0), command (0) ; //command name
-        bool isInside (false);
-        StringVector::const_iterator it_last (it_beg);
+        int section(0), command(0); // command name
+        bool isInside(false);
+        StringVector::const_iterator it_last(it_beg);
 
-
-
-        for(StringVector::const_iterator it_check = it_beg; it_check != it_end; it_check++){
+        for (StringVector::const_iterator it_check = it_beg; it_check != it_end; it_check++) {
 
             std::string line_text = std::string(*it_check);
 
             if (!isInside && isBeginLine(line_text, layer)) {
-                if (section == 0){
+                if (section == 0) {
 
-                    list[namePrior(layer, section, command, attr_section, attr_command)] =
-                        range_it(it_last, it_check);
+                    list[namePrior(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_check);
                     // If the first line is the it_last, then this is going to pick both.
                     if (it_last != it_check) {
                         it_last = it_check;
@@ -63,20 +58,16 @@ public:
                 }
                 section++;
                 isInside = true;
-            } else if (isInside && isCommandLine(line_text, layer)){ // end check
+            } else if (isInside && isCommandLine(line_text, layer)) { // end check
 
                 if (command == 0) {
-                    list[nameBegin(layer, section, command, attr_section, attr_command)] =
-                        range_it(it_last, it_check);
+                    list[nameBegin(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_check);
                 } else {
-                    if (layer == last_layer){
-                        list[nameCommand(layer, section, command, attr_section, attr_command)] =
-                            range_it(it_last, it_check);
+                    if (layer == last_layer) {
+                        list[nameCommand(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_check);
                     } else {
-                        list[nameCommand(layer, section, command, attr_section, attr_command)] =
-                            compile(it_last, it_check, layer + 1);
+                        list[nameCommand(layer, section, command, attr_section, attr_command)] = compile(it_last, it_check, layer + 1);
                     }
-
                 }
                 command++;
 
@@ -85,40 +76,34 @@ public:
                 } else {
                     it_last = it_check + 1;
                 }
-            } else if (isInside && isEndLine(line_text, layer)) { //command check
+            } else if (isInside && isEndLine(line_text, layer)) { // command check
 
                 if (command == 0) {
-                    list[nameBegin(layer, section, command, attr_section, attr_command)] =
-                        range_it(it_last, it_check);
-                } else if (layer == last_layer){
-                    list[nameCommand(layer, section, command, attr_section, attr_command)] =
-                        range_it(it_last, it_check);
+                    list[nameBegin(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_check);
+                } else if (layer == last_layer) {
+                    list[nameCommand(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_check);
                 } else {
-                    list[nameCommand(layer, section, command, attr_section, attr_command)] =
-                        compile(it_last, it_check, layer + 1);
+                    list[nameCommand(layer, section, command, attr_section, attr_command)] = compile(it_last, it_check, layer + 1);
                 }
                 // it_last shouldnt' be the same of it_check, otherwise the document was ill-formed
-                if(it_last ==it_check){
+                if (it_last == it_check) {
                     stop("Document contains the \\end in the same line as a previous command, \
                          I can't split those lines, stopping compilation ");
                 }
 
-                //after the last command we need to save the end on it's own
-                list[nameEnd(layer, section, command, attr_section, attr_command)] =
-                    range_it(it_check, it_check);
+                // after the last command we need to save the end on it's own
+                list[nameEnd(layer, section, command, attr_section, attr_command)] = range_it(it_check, it_check);
                 it_last = it_check + 1;
-                //reset the command number after we set everything
+                // reset the command number after we set everything
                 command = 0;
                 isInside = false;
             }
-
         }
 
-
-        if  (it_last == it_beg){
+        if (it_last == it_beg) {
             list[namePrior(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_end);
             list[namePost(layer, section, command, attr_section, attr_command)] = StringVector::create();
-        } else if (it_last == it_end){
+        } else if (it_last == it_end) {
             list[namePost(layer, section, command, attr_section, attr_command)] = StringVector::create();
         } else {
             list[namePost(layer, section, command, attr_section, attr_command)] = range_it(it_last, it_end);
@@ -129,25 +114,26 @@ public:
         list.attr("section_original") = attr_section;
         list.attr("command_original") = attr_command;
 
-
         return list;
     }
 
 private:
-
-    bool isBeginLine(std::string line_of_text, int layer){
+    bool isBeginLine(std::string line_of_text, int layer)
+    {
         return std::regex_search(line_of_text, start_regex[layer]);
     }
-    bool isCommandLine(std::string line_of_text, int layer){
+    bool isCommandLine(std::string line_of_text, int layer)
+    {
         return std::regex_search(line_of_text, cmd_regex[layer]);
     }
-    bool isEndLine(std::string line_of_text, int layer){
+    bool isEndLine(std::string line_of_text, int layer)
+    {
         return std::regex_search(line_of_text, end_regex[layer]);
     }
 
-
-    StringVector range_it(StringVector::const_iterator it_start, StringVector::const_iterator it_end){
-        if(it_start > it_end){
+    StringVector range_it(StringVector::const_iterator it_start, StringVector::const_iterator it_end)
+    {
+        if (it_start > it_end) {
             StringVector empty_vector;
             return empty_vector;
         }
@@ -160,39 +146,39 @@ private:
         return vect;
     }
 
-    void push_sec_cmd(IntegerVector& sec_v, int section, IntegerVector& cmd_v, int command){
+    void push_sec_cmd(IntegerVector& sec_v, int section, IntegerVector& cmd_v, int command)
+    {
         sec_v.push_back(section);
         cmd_v.push_back(command);
     }
 
-    std::string namePrior(int layer, int section, int command, IntegerVector& sec_v,  IntegerVector& cmd_v){
-        push_sec_cmd(sec_v, 0, cmd_v,0);
+    std::string namePrior(int layer, int section, int command, IntegerVector& sec_v, IntegerVector& cmd_v)
+    {
+        push_sec_cmd(sec_v, 0, cmd_v, 0);
         return "prior_to_" + sectionName[layer];
-
     }
 
-    std::string nameBegin(int layer, int section, int command, IntegerVector& sec_v,  IntegerVector& cmd_v){
-        push_sec_cmd(sec_v, section, cmd_v,0);
+    std::string nameBegin(int layer, int section, int command, IntegerVector& sec_v, IntegerVector& cmd_v)
+    {
+        push_sec_cmd(sec_v, section, cmd_v, 0);
         return std::to_string(section) + "_" + sectionName[layer] + "_begin_" + sectionName[layer];
-
     }
-    std::string nameCommand(int layer, int section, int command, IntegerVector& sec_v,  IntegerVector& cmd_v){
+    std::string nameCommand(int layer, int section, int command, IntegerVector& sec_v, IntegerVector& cmd_v)
+    {
         push_sec_cmd(sec_v, section, cmd_v, command);
         return std::to_string(section) + "_" + sectionName[layer] + "_" + std::to_string(command) + "_" + commandName[layer];
     }
 
-    std::string nameEnd(int layer, int section, int command, IntegerVector& sec_v,  IntegerVector& cmd_v){
+    std::string nameEnd(int layer, int section, int command, IntegerVector& sec_v, IntegerVector& cmd_v)
+    {
         push_sec_cmd(sec_v, section, cmd_v, 0);
         return std::to_string(section) + "_" + sectionName[layer] + "_end_" + sectionName[layer];
     }
-    std::string namePost(int layer, int section, int command, IntegerVector& sec_v,  IntegerVector& cmd_v){
+    std::string namePost(int layer, int section, int command, IntegerVector& sec_v, IntegerVector& cmd_v)
+    {
         push_sec_cmd(sec_v, 0, cmd_v, 0);
         return "post_to_" + sectionName[layer];
     }
-
-
-
-
 };
 
 //' @title Compile Document
@@ -288,17 +274,17 @@ private:
 //' @family Structuring Document
 // [[Rcpp::export]]
 List CompileDocument(
-        const StringVector& x,
-        const StringVector& layersNames,
-        const StringVector& layersCmd){
+    const StringVector& x,
+    const StringVector& layersNames,
+    const StringVector& layersCmd)
+{
 
-    if(layersNames.size() != layersCmd.size() || layersNames.size() == 0){
+    if (layersNames.size() != layersCmd.size() || layersNames.size() == 0) {
         stop("layersNames and layersCmd don't have the correct format");
     }
-    //warning("Test version");
+    // warning("Test version");
 
     LayerCompiler compiler(layersNames, layersCmd);
 
     return compiler.compile(x.begin(), x.end(), 0);
-
 }
