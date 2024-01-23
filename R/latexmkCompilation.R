@@ -15,11 +15,11 @@
 #'
 #' @param pdf.dir.out Directory where the pdf output will be sent to
 #' @param latex.dir.in Directory where all the tex files are found.
-#' @param engine: Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+#' @param engine Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
 #'
 #'        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.
 #
-#' @param compile.dir: Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.
+#' @param compile.dir Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.
 #' @return None
 #' @author Alejandro Recuenco \email{alejandrogonzalezrecuenco@@gmail.com}
 #' @export

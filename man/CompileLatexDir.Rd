@@ -35,11 +35,11 @@ CompileLatexDirHW(
 
 \item{latex.dir.in}{Directory where all the tex files are found.}
 
-\item{engine:}{Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+\item{engine}{Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
 
        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.}
 
-\item{compile.dir:}{Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.}
+\item{compile.dir}{Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.}
 }
 \value{
 None

@@ -12,14 +12,14 @@ DivideFile(x)
 \value{
 Returns a list with two character vectors:
 \describe{
-\item{preamble}{ A character vector that includes \emph{every line} of \code{x} up to \\begin\{document\}}
-\item{document}{A character vector that includes \emph{every line} from \\begin{document} to the first \\end\{document\}} }
+\item{preamble}{A character vector that includes \\emph{every line} of \code{x} up to \\begin{document}}
+\item{document}{A character vector that includes \\emph{every line} from \\begin{document} to the first \\end{document}} }
 }
 \description{
 Function that takes a vector of text lines, \code{x}, and divides it in preamble and document.
 }
 \details{
-It ignores everything after the first \\end\{document\} and it will throw and error if it finds more than one \\begin\{document\} before that
+It ignores everything after the first \\end{document} and it will throw and error if it finds more than one \\begin{document} before that
 }
 \examples{
 file <- system.file(
