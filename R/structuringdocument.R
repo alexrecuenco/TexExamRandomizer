@@ -149,7 +149,7 @@ FindCommand <- function(x, cmdName) {
 
 #' @title DivideFile
 #' @description Function that takes a vector of text lines, \code{x}, and divides it in preamble and document.
-#' @details It ignores everything after the first \\end{document} and it will throw and error if it finds more than one \\begin{document} before that
+#' @details It ignores everything after the first end document command and it will throw and error if it finds more than one begin document command before that
 #' @param x A character vector, each element represents one line of the latex document
 #' @return  Returns a list with two character vectors:
 #' \describe{
