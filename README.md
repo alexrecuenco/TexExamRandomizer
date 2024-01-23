@@ -2,8 +2,8 @@
 [![CRAN](https://www.r-pkg.org/badges/version/TexExamRandomizer)](https://cran.r-project.org/package=TexExamRandomizer)
 [![R-CMD-check](https://github.com/alexrecuenco/TexExamRandomizer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/alexrecuenco/TexExamRandomizer/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/alexrecuenco/TexExamRandomizer/branch/main/graph/badge.svg)](https://app.codecov.io/gh/alexrecuenco/TexExamRandomizer?branch=main)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](http://cranlogs.r-pkg.org/badges/TexExamRandomizer)](http://www.r-pkg.org/pkg/TexExamRandomizer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
+[![Downloads](https://cranlogs.r-pkg.org/badges/TexExamRandomizer)](https://www.r-pkg.org/pkg/TexExamRandomizer)
 
 [comment]:?color=brightgreen
 

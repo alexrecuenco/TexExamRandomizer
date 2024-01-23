@@ -19,7 +19,7 @@
 #'
 #'        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.
 #
-#' @param compile.dir: Directory from which compilation is invoked, if not specified, the directory we are compiling will be from where we do it. (This is specially usefull since we want to mantain the same relative paths from the main file).
+#' @param compile.dir: Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.
 #' @return None
 #' @author Alejandro Recuenco \email{alejandrogonzalezrecuenco@@gmail.com}
 #' @export
