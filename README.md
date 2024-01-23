@@ -114,4 +114,6 @@ R CMD CHECK --as-cran "<version.tar.gz>"
 
 ```
 
-Then [submit it](https://cran.r-project.org/submit.html)
+- Then, check that the CMD-CHECK works with no notes in the deployment in github
+- Then check that you can upload it [here](https://win-builder.r-project.org)
+- Finally, [submit it](https://cran.r-project.org/submit.html)
